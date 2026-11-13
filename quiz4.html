@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz Tema 4</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--ink:#1d1d1f;--muted:#6b6b70;--line:#e3e0d8;--accent:#2f5d8a;--ok:#2e7d4f;--okbg:#e6f4ec;--ko:#b3382c;--kobg:#fbe9e7;}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#17171a;--card:#222226;--ink:#ececef;--muted:#a0a0a8;--line:#34343a;--accent:#7fb0e0;--ok:#6fcf97;--okbg:#1d3326;--ko:#ff8a7a;--kobg:#3a1f1c;color-scheme:dark;}}
+:root[data-theme="dark"]{--bg:#17171a;--card:#222226;--ink:#ececef;--muted:#a0a0a8;--line:#34343a;--accent:#7fb0e0;--ok:#6fcf97;--okbg:#1d3326;--ko:#ff8a7a;--kobg:#3a1f1c;color-scheme:dark;}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding-block:24px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1{font-size:1.6rem;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 20px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+button.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:6px 12px;border-radius:999px;cursor:pointer;font-size:.9rem}
+button.chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.score{position:sticky;top:env(safe-area-inset-top,0px);flex-wrap:wrap;gap:8px;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;z-index:2}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+.q .tag{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.q h3{font-size:1.02rem;margin:4px 0 12px;font-weight:600}
+.opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:transparent;color:var(--ink);padding:10px 12px;border-radius:8px;margin:6px 0;cursor:pointer;font-size:.95rem}
+.opt:focus-visible,.act:focus-visible,button.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.opt:hover:not([disabled]){border-color:var(--accent)}
+.opt.ok{background:var(--okbg);border-color:var(--ok)}
+.opt.ko{background:var(--kobg);border-color:var(--ko)}
+.opt[disabled]{cursor:default}
+.exp{margin-top:10px;padding:10px 12px;border-left:3px solid var(--accent);background:var(--bg);border-radius:4px;font-size:.92rem;display:none}
+.q.done .exp{display:block}
+.act{background:var(--accent);color:#fff;border:0;padding:8px 14px;border-radius:8px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p style="margin:0 0 8px;font-size:.9rem"><a href="index.html" style="color:var(--accent);text-decoration:none">← Tutti i temi</a></p>
+<h1>Quiz — Tema 4 — La teoría de la distribución (mercados de factores, mercado de trabajo y desigualdad)</h1>
+<p class="sub">Clicca una risposta: vedi subito se è corretta e la spiegazione. Filtra per capitolo o mescola tutto.</p>
+<div class="bar" id="filters"></div>
+<div class="score"><span id="score">0 / 0</span><span><button class="act" id="shuffle">Mescola</button> <button class="act" id="reset">Ricomincia</button></span></div>
+<div id="list"></div>
+</div>
+<script>
+const DATA = [{"q": "La demanda de trabajo se dice 'derivada' porque...", "options": ["depende del salario de reserva", "deriva de la demanda de los bienes que el trabajo ayuda a producir", "la fija el Estado mediante convenios", "la determinan las familias en funcion de su renta"], "answer": 1, "explanation": "Los factores se demandan por su contribucion a producir bienes (slide 3-4).", "ch": 1}, {"q": "Una empresa competitiva contrata trabajadores mientras...", "options": ["W > VPML", "VPML > W", "PML > P", "el beneficio medio sea cero"], "answer": 1, "explanation": "Regla de la slide 6: contratar mientras VPML > W; optimo cuando VPML = W.", "ch": 1}, {"q": "El valor del producto marginal del trabajo (VPML) se calcula como...", "options": ["PML / P", "P x PML", "Q / L", "W x PML"], "answer": 1, "explanation": "VPML = precio del producto por producto marginal del trabajo.", "ch": 1}, {"q": "Con P = 5 y un PML de 12 unidades, el VPML es...", "options": ["17", "60", "2,4", "7"], "answer": 1, "explanation": "5 x 12 = 60.", "ch": 1}, {"q": "La curva de demanda de trabajo de la empresa competitiva es...", "options": ["la funcion de produccion", "la curva de oferta de las familias", "la curva del VPML, decreciente", "una recta horizontal en W"], "answer": 2, "explanation": "Slide 7: la curva VPML es la demanda de trabajo; a mayor W, menor contratacion.", "ch": 1}, {"q": "Por que el producto marginal del trabajo es decreciente (tabla Q: 0,100,180,240,280,300)?", "options": ["Cada trabajador cuesta mas", "Baja el salario", "Cada trabajador adicional aporta menos que el anterior (100,80,60,40,20)", "Sube el precio del producto"], "answer": 2, "explanation": "Los incrementos de Q son 100,80,60,40,20.", "ch": 1}, {"q": "Si el precio del producto sube, en el mercado de trabajo...", "options": ["la demanda se desplaza a la derecha: suben w y L", "solo sube L, no w", "la oferta se desplaza a la derecha", "la demanda se desplaza a la izquierda"], "answer": 0, "explanation": "Sube el VPML de cada trabajador (slide 13).", "ch": 2}, {"q": "PML por trabajador: L=1:30, 2:90, 3:130 coches. P=4, W=60/dia. El beneficio marginal del 3er trabajador es...", "options": ["-20", "160", "40", "100"], "answer": 3, "explanation": "PML=40, VPML=160, BML=160-60=100.", "ch": 1}, {"q": "Un trabajador cobra 8 EUR/hora y trabaja 5 horas/dia; P=2. Se contrata si su PML diario es al menos...", "options": ["40 unidades", "10 unidades", "20 unidades", "16 unidades"], "answer": 2, "explanation": "W=40 EUR/dia; VPML=2xPML>=40 -> PML>=20.", "ch": 1}, {"q": "La tasa de actividad es...", "options": ["horas trabajadas / horas totales", "ocupados / poblacion total", "poblacion activa / poblacion en edad de trabajar", "parados / poblacion activa"], "answer": 2, "explanation": "Slide 10: porcentaje de poblacion activa sobre la poblacion en edad de trabajar.", "ch": 3}, {"q": "El salario de reserva es...", "options": ["el salario minimo al que a una persona le compensa entrar en la poblacion activa", "el salario fijado por ley", "el salario del paro", "el salario de equilibrio"], "answer": 0, "explanation": "Incentivo a entrar en la poblacion activa (slide 10).", "ch": 3}, {"q": "La curva de oferta individual de trabajo puede curvarse hacia atras porque...", "options": ["con salarios altos la renta es suficiente y se prefiere mas ocio", "la empresa reduce horas", "el ocio es mas caro", "baja la productividad"], "answer": 0, "explanation": "Slide 11.", "ch": 3}, {"q": "Una emigracion de trabajadores provoca...", "options": ["ningun cambio", "oferta a la derecha: baja w, sube L", "oferta a la izquierda: sube w, baja L", "demanda a la izquierda"], "answer": 2, "explanation": "Menos poblacion activa -> oferta disminuye.", "ch": 2}, {"q": "Ld=1000-100w, Ls=300w. El salario de equilibrio es...", "options": ["2", "10", "2,5", "3,3"], "answer": 2, "explanation": "1000=400w -> w=2,5; L=750.", "ch": 2}, {"q": "Ld=30-5w, Ls=3w+4. El empleo de equilibrio es...", "options": ["3,25", "13,75", "26", "16,25"], "answer": 1, "explanation": "w=26/8=3,25; L=3x3,25+4=13,75.", "ch": 2}, {"q": "Ld=1800-100w, Ls=350w. Con un salario minimo de 5 EUR, el desempleo es...", "options": ["350", "450", "1300", "50"], "answer": 1, "explanation": "Ld=1300, Ls=1750, diferencia 450.", "ch": 2}, {"q": "Con Ld=1800-100w, Ls=350w, un salario minimo de 2 EUR...", "options": ["sube el empleo", "baja el salario de equilibrio", "no tiene efecto (no es vinculante)", "genera desempleo de 200"], "answer": 2, "explanation": "El equilibrio es 4 > 2.", "ch": 2}, {"q": "Ld=30-5w, Ls=3w+4. Para un desempleo de 3 unidades, el salario es...", "options": ["3,625", "4", "3,25", "2,875"], "answer": 0, "explanation": "8w-26=3 -> w=29/8=3,625.", "ch": 2}, {"q": "Ld=20-2w, Ls=3w. Si el salario fijo es 6, el desempleo es...", "options": ["18", "10", "6", "8"], "answer": 1, "explanation": "Ld=20-12=8, Ls=18; desempleo = 18-8 = 10.", "ch": 2}, {"q": "En el mercado espanol, la inflexibilidad salarial a la baja se asocia con...", "options": ["los salarios de eficiencia", "el SMI", "los contratos largos", "las clausulas de revision"], "answer": 0, "explanation": "Slide 19.", "ch": 2}, {"q": "Los trabajos peligrosos pagan mas por...", "options": ["la discriminacion", "el efecto superestrella", "la teoria de las senales", "las diferencias compensatorias"], "answer": 3, "explanation": "Slide 24.", "ch": 4}, {"q": "El capital humano es...", "options": ["el stock de inversiones en personas", "el numero de trabajadores", "el dinero ahorrado", "la maquinaria de la empresa"], "answer": 0, "explanation": "Slide 24.", "ch": 4}, {"q": "Segun la teoria de las senales, el titulo universitario...", "options": ["es inutil", "revela la capacidad, no la crea", "aumenta siempre la productividad", "lo imponen los clientes"], "answer": 1, "explanation": "Slide 25.", "ch": 4}, {"q": "El fenomeno de las superestrellas se explica porque...", "options": ["trabajan mas horas", "reciben mas suerte", "alcanzan a muchisimas personas con el mismo servicio", "tienen mas capital humano"], "answer": 2, "explanation": "Slide 25.", "ch": 4}, {"q": "El indice de Gini se calcula como...", "options": ["A x B", "A/(A+B)", "A - B", "B/(A+B)"], "answer": 1, "explanation": "A entre diagonal y Lorenz; B bajo Lorenz.", "ch": 5}, {"q": "Si la curva de Lorenz coincide con la diagonal, el Gini es...", "options": ["1", "100", "0,5", "0"], "answer": 3, "explanation": "Igualdad perfecta, A=0.", "ch": 5}, {"q": "La tasa de pobreza es el porcentaje de poblacion con renta...", "options": ["igual a cero", "superior a la media", "por encima del Gini", "inferior al umbral de pobreza"], "answer": 3, "explanation": "Slide 27.", "ch": 5}, {"q": "Segun Rawls (velo de ignorancia) hay que...", "options": ["eliminar impuestos", "maximizar la utilidad de los grupos de menor renta", "garantizar solo la igualdad de oportunidades", "maximizar la utilidad total"], "answer": 1, "explanation": "Slide 34.", "ch": 6}, {"q": "Un salario minimo elevado por encima del equilibrio genera...", "options": ["mas vacantes", "exceso de oferta (desempleo)", "exceso de demanda", "mayor empleo"], "answer": 1, "explanation": "Slide 36.", "ch": 6}, {"q": "Nozick (liberalismo) subraya...", "options": ["la igualdad de oportunidades", "el impuesto negativo", "maximin", "la utilidad total de la sociedad"], "answer": 0, "explanation": "Slide 35.", "ch": 6}];
+const CHAPS = ["Demanda de trabajo", "Equilibrio y paro", "Oferta de trabajo", "Salarios y discriminacion", "Desigualdad y Gini", "Redistribucion"];
+let filter = 'all', order = DATA.map((_,i)=>i), right=0, answered=0;
+const $ = s=>document.querySelector(s);
+function renderFilters(){
+  const f=$('#filters'); f.innerHTML='';
+  [['all','Tutti ('+DATA.length+')'],...CHAPS.map((c,i)=>[String(i+1),c])].forEach(([k,l])=>{
+    const b=document.createElement('button'); b.className='chip'+(filter===k?' on':''); b.textContent=l;
+    b.onclick=()=>{filter=k;render();}; f.appendChild(b);
+  });
+}
+function render(){
+  renderFilters(); right=0; answered=0;
+  const list=$('#list'); list.innerHTML='';
+  const items=order.filter(i=>filter==='all'||String(DATA[i].ch)===filter);
+  items.forEach((i,n)=>{
+    const d=DATA[i], el=document.createElement('div'); el.className='q';
+    el.innerHTML='<div class="tag">'+(n+1)+' · '+CHAPS[d.ch-1]+'</div><h3></h3>';
+    el.querySelector('h3').textContent=d.q;
+    d.options.forEach((o,j)=>{
+      const b=document.createElement('button'); b.className='opt'; b.textContent=String.fromCharCode(65+j)+') '+o;
+      b.onclick=()=>{
+        el.classList.add('done'); answered++;
+        el.querySelectorAll('.opt').forEach((x,k)=>{x.disabled=true; if(k===d.answer)x.classList.add('ok');});
+        if(j===d.answer) right++; else b.classList.add('ko');
+        upd(items.length);
+      };
+      el.appendChild(b);
+    });
+    const e=document.createElement('div'); e.className='exp'; e.textContent=d.explanation; el.appendChild(e);
+    list.appendChild(el);
+  });
+  upd(items.length);
+}
+function upd(t){$('#score').textContent='Corrette: '+right+' / '+answered+'  ·  Totale domande: '+t;}
+$('#shuffle').onclick=()=>{order.sort(()=>Math.random()-.5);render();window.scrollTo(0,0);};
+$('#reset').onclick=()=>{order=DATA.map((_,i)=>i);render();window.scrollTo(0,0);};
+render();
+</script>
+</body>
+</html>

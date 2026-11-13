@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz Tema 1</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--ink:#1d1d1f;--muted:#6b6b70;--line:#e3e0d8;--accent:#2f5d8a;--ok:#2e7d4f;--okbg:#e6f4ec;--ko:#b3382c;--kobg:#fbe9e7;}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#17171a;--card:#222226;--ink:#ececef;--muted:#a0a0a8;--line:#34343a;--accent:#7fb0e0;--ok:#6fcf97;--okbg:#1d3326;--ko:#ff8a7a;--kobg:#3a1f1c;color-scheme:dark;}}
+:root[data-theme="dark"]{--bg:#17171a;--card:#222226;--ink:#ececef;--muted:#a0a0a8;--line:#34343a;--accent:#7fb0e0;--ok:#6fcf97;--okbg:#1d3326;--ko:#ff8a7a;--kobg:#3a1f1c;color-scheme:dark;}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding-block:24px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1{font-size:1.6rem;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 20px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+button.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:6px 12px;border-radius:999px;cursor:pointer;font-size:.9rem}
+button.chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.score{position:sticky;top:env(safe-area-inset-top,0px);flex-wrap:wrap;gap:8px;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;z-index:2}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+.q .tag{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.q h3{font-size:1.02rem;margin:4px 0 12px;font-weight:600}
+.opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:transparent;color:var(--ink);padding:10px 12px;border-radius:8px;margin:6px 0;cursor:pointer;font-size:.95rem}
+.opt:focus-visible,.act:focus-visible,button.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.opt:hover:not([disabled]){border-color:var(--accent)}
+.opt.ok{background:var(--okbg);border-color:var(--ok)}
+.opt.ko{background:var(--kobg);border-color:var(--ko)}
+.opt[disabled]{cursor:default}
+.exp{margin-top:10px;padding:10px 12px;border-left:3px solid var(--accent);background:var(--bg);border-radius:4px;font-size:.92rem;display:none}
+.q.done .exp{display:block}
+.act{background:var(--accent);color:#fff;border:0;padding:8px 14px;border-radius:8px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p style="margin:0 0 8px;font-size:.9rem"><a href="index.html" style="color:var(--accent);text-decoration:none">← Tutti i temi</a></p>
+<h1>Quiz — Tema 1 — Introducción a la Economía: escasez, elección y Frontera de Posibilidades de Producción</h1>
+<p class="sub">Clicca una risposta: vedi subito se è corretta e la spiegazione. Filtra per capitolo o mescola tutto.</p>
+<div class="bar" id="filters"></div>
+<div class="score"><span id="score">0 / 0</span><span><button class="act" id="shuffle">Mescola</button> <button class="act" id="reset">Ricomincia</button></span></div>
+<div id="list"></div>
+</div>
+<script>
+const DATA = [{"q": "Ana tiene 90 euros al mes; el cine cuesta 6 euros y cada libro 3 euros. Cuales son los cortes de su recta presupuestaria (entradas de cine, libros)?", "options": ["18 entradas y 36 libros", "15 entradas y 30 libros", "15 entradas y 15 libros", "30 entradas y 15 libros"], "answer": 1, "explanation": "Corte cine = 90/6 = 15; corte libros = 90/3 = 30.", "ch": 1}, {"q": "Con el cine a 6 euros y los libros a 3 euros, el coste de oportunidad de una entrada de cine es:", "options": ["6 libros", "3 libros", "0,5 libros", "2 libros"], "answer": 3, "explanation": "CO cine = Pcine/Plibro = 6/3 = 2 libros (0,5 es el coste de un libro medido en entradas).", "ch": 1}, {"q": "Con 120 euros, cine a 6 euros y libros a 3 euros, el precio del cine baja a 5 euros. Que ocurre con la recta presupuestaria?", "options": ["Se desplaza en paralelo hacia fuera", "Gira alrededor del corte de cine y el de libros sube", "Gira alrededor del corte de libros y el corte de cine pasa de 20 a 24", "Se desplaza en paralelo hacia dentro"], "answer": 2, "explanation": "120/5 = 24 entradas (antes 20); el corte de libros (120/3 = 40) no cambia: la recta gira.", "ch": 1}, {"q": "A un presupuesto de 120 euros se le suman 18 euros (cine 6, libro 3). Los nuevos cortes son:", "options": ["26 entradas y 52 libros", "23 entradas y 46 libros", "20 entradas y 46 libros", "23 entradas y 40 libros"], "answer": 1, "explanation": "138/6 = 23 y 138/3 = 46. Un aumento de renta desplaza la recta en paralelo: los costes de oportunidad no cambian.", "ch": 1}, {"q": "Con 120 euros y cine a 6 euros, el precio de los libros sube de 3 a 6 euros. El coste de oportunidad de una entrada de cine pasa de 2 libros a:", "options": ["4 libros", "1 libro", "2 libros", "0,5 libros"], "answer": 1, "explanation": "CO = 6/6 = 1 libro. El corte de libros pasa de 40 a 20 y el de cine sigue en 20.", "ch": 1}, {"q": "Un pais produce trigo y vino con las posibilidades (trigo, vino): (0,90), (10,80), (20,60), (30,30), (40,0). Cual es el coste de oportunidad de aumentar el trigo de 10 a 30?", "options": ["80 unidades de vino", "30 unidades de vino", "20 unidades de vino", "50 unidades de vino"], "answer": 3, "explanation": "De (10,80) a (30,30) el vino baja 80-30 = 50.", "ch": 1}, {"q": "Con la tabla trigo-vino (0,90), (10,80), (20,60), (30,30), (40,0), el coste de oportunidad de producir una unidad mas de trigo:", "options": ["Es decreciente", "Es constante", "Es creciente: 1, 2 y 3 unidades de vino por unidad de trigo", "Es cero hasta llegar al punto (30,30)"], "answer": 2, "explanation": "Por tramos: 10/10 = 1, 20/10 = 2, 30/10 = 3: crece, la FPP es concava.", "ch": 1}, {"q": "En la tabla trigo-vino anterior, el punto (20,70) es:", "options": ["Factible pero ineficiente", "Eficiente porque usa todo el trigo", "Imposible: esta fuera (por encima) de la frontera", "Factible y eficiente"], "answer": 2, "explanation": "Con 20 de trigo el maximo de vino es 60; 70 > 60, esta fuera de la FPP.", "ch": 1}, {"q": "En la tabla trigo-vino anterior, el punto (20,40) es:", "options": ["Eficiente, esta sobre la FPP", "Factible pero ineficiente (dentro de la FPP)", "Un punto de crecimiento economico", "Imposible"], "answer": 1, "explanation": "Con 20 de trigo se pueden producir hasta 60 de vino; 40 < 60: esta dentro de la FPP, hay recursos desaprovechados.", "ch": 1}, {"q": "Una pasteleria produce (tartas, kilos de pasteles): (0,40), (20,36), (40,24), (60,0). Pasar de 20 a 40 tartas tiene un coste de oportunidad de:", "options": ["24 kilos de pasteles", "20 kilos de pasteles", "4 kilos de pasteles", "12 kilos de pasteles"], "answer": 3, "explanation": "De (20,36) a (40,24): 36-24 = 12 kilos.", "ch": 1}, {"q": "Un alumno tiene 6 dias. Nota en Micro segun dias (0 a 6): 0, 3, 5, 6, 6.5, 7, 7.5. Nota en Historia: 0, 4, 6, 7.5, 8, 9, 10. Que reparto da la nota media mas alta?", "options": ["2 dias en Micro y 4 en Historia (media 6,5)", "3 dias en Micro y 3 en Historia (media 6,75)", "1 dia en Micro y 5 en Historia (media 6)", "4 dias en Micro y 2 en Historia (media 6,25)"], "answer": 1, "explanation": "Medias (x dias en Micro, 6-x en Historia): 5; 6; 6,5; 6,75; 6,25; 5,5; 3,75. El maximo es con x = 3.", "ch": 1}, {"q": "Un recurso es escaso cuando:", "options": ["Su precio es muy alto", "Solo lo tienen los paises pobres", "Es un recurso no renovable", "Las cantidades disponibles no bastan para satisfacer todas las necesidades productivas"], "answer": 3, "explanation": "La escasez es la insuficiencia de recursos respecto a las necesidades; afecta a todos, ricos y pobres.", "ch": 2}, {"q": "Cuales son los factores de produccion segun el tema?", "options": ["Tierra, tecnologia y consumo", "Dinero, empresas y gobierno", "Tierra (recursos naturales), trabajo y capital (fisico y humano)", "Oferta, demanda y precio"], "answer": 2, "explanation": "Factores: tierra, trabajo y capital (capital fisico y capital humano).", "ch": 2}, {"q": "Las competencias y conocimientos de medicos, ingenieros o informaticos son un ejemplo de:", "options": ["Capital fisico", "Capital humano", "Funcion de produccion", "Recurso natural"], "answer": 1, "explanation": "El capital humano son las habilidades de las personas; el capital fisico son fabricas, maquinas, tractores.", "ch": 2}, {"q": "La funcion de produccion es:", "options": ["El reparto del output entre hogares", "La lista de bienes que produce el gobierno", "La relacion entre la cantidad de factores productivos utilizados y la cantidad de output producida", "La relacion entre precio y cantidad demandada"], "answer": 2, "explanation": "Inputs (recursos naturales, trabajo, capital, iniciativa empresarial) + tecnologia = outputs (bienes y servicios).", "ch": 2}, {"q": "Las tres preguntas basicas que debe responder todo sistema economico son:", "options": ["Que producir y cuanto, como producirlo y para quien", "Que impuestos cobrar, a quien y cuando", "Que consumir, que ahorrar y que invertir", "Cuanto cuesta, quien lo vende y donde"], "answer": 0, "explanation": "Que producir y cuanto; como se producen los bienes; para quien se producen.", "ch": 3}, {"q": "Los agentes economicos del tema son:", "options": ["Productores, intermediarios y consumidores", "Hogares, bancos y sindicatos", "Hogares, empresas y gobierno", "Oferta, demanda y gobierno"], "answer": 2, "explanation": "Los tres agentes: hogares, empresas y gobierno; intercambian bienes y factores.", "ch": 3}, {"q": "El articulo 38 de la Constitucion Espanola de 1978 reconoce la libertad de empresa en el marco de:", "options": ["El libre mercado sin ninguna intervencion publica", "La economia centralmente planificada exclusivamente", "La economia de subsistencia", "La economia de mercado (admitiendo la planificacion en su caso)"], "answer": 3, "explanation": "El art. 38 habla de economia de mercado y, 'en su caso', de planificacion: sistema mixto.", "ch": 3}, {"q": "Un supuesto critico de un modelo es aquel que:", "options": ["Simplifica el modelo sin afectar a las conclusiones", "Se puede eliminar sin consecuencias", "Influye de forma importante en las conclusiones; si es erroneo, el modelo es erroneo", "Solo se usa en macroeconomia"], "answer": 2, "explanation": "Los supuestos simplificadores no cambian las conclusiones; los criticos si. Todo modelo tiene al menos uno.", "ch": 1}, {"q": "En los ejes de la FPP se miden:", "options": ["Precios de los bienes", "Cantidades de bienes, no euros", "Euros de produccion", "Porcentajes de empleo"], "answer": 1, "explanation": "La unidad de los ejes es la cantidad de bienes (diapositiva 24).", "ch": 1}, {"q": "La FPP tiene pendiente negativa porque:", "options": ["Hay recesion", "La tecnologia empeora", "Los precios caen", "Los recursos son escasos: producir mas de un bien implica producir menos del otro"], "answer": 3, "explanation": "Escasez = coste de oportunidad: lo que se gana en un bien se pierde en el otro.", "ch": 1}, {"q": "Que indica que la FPP sea concava (curvada hacia fuera)?", "options": ["Que hay ineficiencia", "Que el coste de oportunidad es constante", "Que el coste de oportunidad es creciente", "Que no hay escasez"], "answer": 2, "explanation": "Cuanto mas se produce de un bien, mas hay que renunciar del otro por cada unidad adicional.", "ch": 1}, {"q": "Una recesion en el modelo de la FPP se representa como:", "options": ["Un punto dentro de la FPP (recursos desaprovechados)", "Un punto fuera de la FPP", "Un punto sobre la FPP con coste de oportunidad cero", "Un desplazamiento de la FPP hacia fuera"], "answer": 0, "explanation": "En recesion hay desempleo de recursos: ineficiencia productiva; al salir se avanza hacia la FPP.", "ch": 4}, {"q": "Cual de estos hechos desplaza la FPP hacia fuera?", "options": ["Pasar de un punto de la FPP a otro", "Un aumento del paro", "Un aumento del capital fisico o un avance tecnologico", "Una recesion"], "answer": 2, "explanation": "El crecimiento economico llega por mas recursos (capital) o mejor tecnologia.", "ch": 4}, {"q": "Un avance tecnologico que solo afecta a la fabricacion de coches provoca en la FPP (coches en el eje horizontal):", "options": ["Un desplazamiento vertical hacia arriba", "Un desplazamiento horizontal: aumenta el corte en el eje de coches y no el de ordenadores", "Una contraccion de la FPP", "Un movimiento a lo largo de la FPP"], "answer": 1, "explanation": "La FPP se desplaza solo en el eje del bien afectado (de F a F'); la sociedad puede producir mas coches o mas de ambos bienes.", "ch": 4}, {"q": "Cual de estos temas es de macroeconomia?", "options": ["Los costes de una empresa concreta", "El precio de un mercado especifico", "La inflacion y el paro del conjunto de la economia", "La eleccion de un consumidor entre dos bienes"], "answer": 2, "explanation": "Macro estudia la economia como un conjunto: crecimiento, paro, inflacion, deficit.", "ch": 5}, {"q": "Micro y macro vienen del griego. Que significan 'mikros' y 'makros'?", "options": ["Pequeno y grande", "Individual y publico", "Mercado y moneda", "Corto y largo plazo"], "answer": 0, "explanation": "Micro = pequeno (hogares, empresas, mercados); macro = grande (economia en conjunto).", "ch": 5}, {"q": "Cual de estas afirmaciones es de economia positiva?", "options": ["El Gobierno debe subir las pensiones", "La subida del Euribor reduce la capacidad de ahorro de los hogares", "Los estadounidenses viven mejor que los portugueses", "El sistema sanitario debe ser gratuito"], "answer": 1, "explanation": "Es una relacion causa-efecto contrastable con datos; las otras contienen 'debe' o 'mejor' (juicios de valor).", "ch": 6}, {"q": "Una afirmacion de economia normativa se caracteriza por:", "options": ["Describir como funciona la economia", "Ser siempre falsa", "Basarse en juicios de valor y no poder probarse ni rechazarse solo con hechos", "Poder contrastarse con datos objetivos"], "answer": 2, "explanation": "La normativa estudia lo que deberia ser; la positiva puede contrastarse con los hechos (sea verdadera o falsa).", "ch": 6}, {"q": "'El descenso en la creacion de empleo aconseja aplicar medidas para dinamizar la economia' es una afirmacion:", "options": ["Normativa, porque recomienda una actuacion (juicio de valor)", "Positiva, porque se mide con datos", "Ni positiva ni normativa", "Positiva, porque habla de empleo"], "answer": 0, "explanation": "'Aconseja' indica lo que se deberia hacer: economia normativa (politica economica).", "ch": 6}];
+const CHAPS = ["Modelos y FPP", "Escasez y factores", "Agentes y sistemas", "Eficiencia y crecimiento", "Micro y Macro", "Positiva y normativa"];
+let filter = 'all', order = DATA.map((_,i)=>i), right=0, answered=0;
+const $ = s=>document.querySelector(s);
+function renderFilters(){
+  const f=$('#filters'); f.innerHTML='';
+  [['all','Tutti ('+DATA.length+')'],...CHAPS.map((c,i)=>[String(i+1),c])].forEach(([k,l])=>{
+    const b=document.createElement('button'); b.className='chip'+(filter===k?' on':''); b.textContent=l;
+    b.onclick=()=>{filter=k;render();}; f.appendChild(b);
+  });
+}
+function render(){
+  renderFilters(); right=0; answered=0;
+  const list=$('#list'); list.innerHTML='';
+  const items=order.filter(i=>filter==='all'||String(DATA[i].ch)===filter);
+  items.forEach((i,n)=>{
+    const d=DATA[i], el=document.createElement('div'); el.className='q';
+    el.innerHTML='<div class="tag">'+(n+1)+' · '+CHAPS[d.ch-1]+'</div><h3></h3>';
+    el.querySelector('h3').textContent=d.q;
+    d.options.forEach((o,j)=>{
+      const b=document.createElement('button'); b.className='opt'; b.textContent=String.fromCharCode(65+j)+') '+o;
+      b.onclick=()=>{
+        el.classList.add('done'); answered++;
+        el.querySelectorAll('.opt').forEach((x,k)=>{x.disabled=true; if(k===d.answer)x.classList.add('ok');});
+        if(j===d.answer) right++; else b.classList.add('ko');
+        upd(items.length);
+      };
+      el.appendChild(b);
+    });
+    const e=document.createElement('div'); e.className='exp'; e.textContent=d.explanation; el.appendChild(e);
+    list.appendChild(el);
+  });
+  upd(items.length);
+}
+function upd(t){$('#score').textContent='Corrette: '+right+' / '+answered+'  ·  Totale domande: '+t;}
+$('#shuffle').onclick=()=>{order.sort(()=>Math.random()-.5);render();window.scrollTo(0,0);};
+$('#reset').onclick=()=>{order=DATA.map((_,i)=>i);render();window.scrollTo(0,0);};
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.13" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tema 1 — Introducción a la Economía: escasez, elección y Frontera de Posibilidades de Producción</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
+      background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        color-scheme: light only;
+      }
+      html, body, pre, code {
+        background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
+        color: black;
+      }
+      pre, code {
+        padding: 0;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a, a:visited {
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
+      color: #606060;
+      color: light-dark(#606060, #b6b6b6);
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid currentColor;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+    }
+    th {
+      border-top: 1px solid currentColor;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  :root{--bg:#fbfaf7;--card:#ffffff;--ink:#1f2328;--muted:#5d636b;--line:#e2ded4;--accent:#2f5d8a;--quote:#f1efe8;color-scheme:light}
+  @media (prefers-color-scheme: dark){:root{--bg:#16171a;--card:#1f2024;--ink:#e9eaed;--muted:#a3a7ae;--line:#33353b;--accent:#86b6e6;--quote:#23252a;color-scheme:dark}}
+  html{background:var(--bg)}
+  body{max-width:820px;margin:0 auto;padding:24px max(18px,env(safe-area-inset-left,0px)) 80px;background:var(--bg);color:var(--ink);font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;hyphens:auto}
+  h1{font-size:1.9rem;line-height:1.2;text-wrap:balance;margin:.4em 0 .6em}
+  h2{font-size:1.4rem;margin-top:2.2em;padding-top:.6em;border-top:2px solid var(--line);text-wrap:balance}
+  h3{font-size:1.15rem;margin-top:1.8em;color:var(--accent)}
+  h4{font-size:1rem;margin-top:1.4em}
+  a{color:var(--accent)}
+  blockquote{margin:1em 0;padding:.6em 1em;background:var(--quote);border-left:4px solid var(--accent);border-radius:4px}
+  blockquote p{margin:.35em 0}
+  table{border-collapse:collapse;display:block;overflow-x:auto;margin:1em 0;font-size:.93rem;font-variant-numeric:tabular-nums}
+  th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+  th{background:var(--quote)}
+  code{font-size:.9em}
+  pre{overflow-x:auto;background:var(--quote);padding:12px;border-radius:6px;font-size:.85rem;line-height:1.35}
+  math{font-size:1.05em}
+  math[display=block]{overflow-x:auto;overflow-y:hidden;padding:.3em 0}
+  hr{border:0;border-top:1px solid var(--line);margin:2em 0}
+  nav#TOC{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 18px;margin:1em 0 2em;font-size:.95rem}
+  nav#TOC ul{padding-left:1.2em;margin:.3em 0}
+  nav#TOC > ul > li > ul{display:none}
+  .top{font-size:.9rem;margin-bottom:8px}
+  .top a{text-decoration:none}
+  @media print{body{max-width:none;font-size:11pt;padding:0}.top{display:none}h2{break-before:page;border-top:0}h2:first-of-type{break-before:auto}blockquote,table,pre{break-inside:avoid}nav#TOC{break-after:page}}
+  @page{size:A4;margin:16mm 14mm}
+  </style>
+</head>
+<body>
+<div class="top"><a href="index.html">← Tutti i temi</a></div>
+<header id="title-block-header">
+<h1 class="title">Tema 1 — Introducción a la Economía: escasez, elección
+y Frontera de Posibilidades de Producción</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#mappa-del-tema" id="toc-mappa-del-tema">Mappa del
+tema</a></li>
+<li><a href="#capitolo-1-contesto-e-utilità-delleconomia-slide-1-6"
+id="toc-capitolo-1-contesto-e-utilità-delleconomia-slide-1-6">Capitolo 1
+— Contesto e utilità dell’economia (slide 1-6)</a></li>
+<li><a href="#capitolo-2-scarsità-e-scelta-individuale-slide-7-13"
+id="toc-capitolo-2-scarsità-e-scelta-individuale-slide-7-13">Capitolo 2
+— Scarsità e scelta individuale (slide 7-13)</a></li>
+<li><a
+href="#capitolo-3-agenti-economici-e-sistemi-economici-slide-14-17"
+id="toc-capitolo-3-agenti-economici-e-sistemi-economici-slide-14-17">Capitolo
+3 — Agenti economici e sistemi economici (slide 14-17)</a></li>
+<li><a href="#capitolo-4-la-scienza-economica-i-modelli-slide-18-20"
+id="toc-capitolo-4-la-scienza-economica-i-modelli-slide-18-20">Capitolo
+4 — La scienza economica: i modelli (slide 18-20)</a></li>
+<li><a
+href="#capitolo-5-la-frontera-de-posibilidades-de-producción-slide-21-25"
+id="toc-capitolo-5-la-frontera-de-posibilidades-de-producción-slide-21-25">Capitolo
+5 — La Frontera de Posibilidades de Producción (slide 21-25)</a></li>
+<li><a
+href="#capitolo-6-efficienza-recessione-e-crescita-economica-slide-26-32"
+id="toc-capitolo-6-efficienza-recessione-e-crescita-economica-slide-26-32">Capitolo
+6 — Efficienza, recessione e crescita economica (slide 26-32)</a></li>
+<li><a href="#capitolo-7-microeconomia-e-macroeconomia-slide-33-36"
+id="toc-capitolo-7-microeconomia-e-macroeconomia-slide-33-36">Capitolo 7
+— Microeconomia e Macroeconomia (slide 33-36)</a></li>
+<li><a
+href="#capitolo-8-economia-positiva-e-normativa-rami-come-studiare-slide-37-39"
+id="toc-capitolo-8-economia-positiva-e-normativa-rami-come-studiare-slide-37-39">Capitolo
+8 — Economia positiva e normativa; rami; come studiare (slide
+37-39)</a></li>
+<li><a href="#esercizi-epd-1-cosa-scrivere-sul-foglio-desame"
+id="toc-esercizi-epd-1-cosa-scrivere-sul-foglio-desame">Esercizi EPD 1 —
+cosa scrivere sul foglio d’esame</a></li>
+</ul>
+</nav>
+<h2 id="mappa-del-tema">Mappa del tema</h2>
+<p><strong>Filo logico in una frase.</strong> Le risorse sono scarse
+(<em>escasez</em>) → quindi bisogna scegliere (<em>elección</em>) →
+scegliere significa rinunciare a qualcosa (<em>coste de
+oportunidad</em>) → l’economia studia come individui e società scelgono,
+e lo fa con <em>modelli</em> semplificati → il modello base del tema è
+la <strong>FPP</strong> (<em>Frontera de Posibilidades de
+Producción</em>), che mostra cosa si può produrre, cosa è inefficiente,
+cosa è impossibile e come cresce l’economia.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Blocco</th>
+<th>Slide</th>
+<th>Concetto chiave</th>
+<th>Parola spagnola da conoscere</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contesto e utilità</td>
+<td>1-6</td>
+<td>Perché studiare economia</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Scarsità e scelta</td>
+<td>7-13</td>
+<td>Risorse scarse, bisogni illimitati, fattori produttivi, funzione di
+produzione</td>
+<td><em>escasez, factores de producción, función de producción</em></td>
+</tr>
+<tr>
+<td>Agenti e sistemi</td>
+<td>14-17</td>
+<td>Famiglie, imprese, governo; 3 domande; mercato vs pianificata</td>
+<td><em>agentes económicos, sistemas económicos</em></td>
+</tr>
+<tr>
+<td>Modelli</td>
+<td>18-20</td>
+<td>Semplificazione della realtà; ipotesi semplificatrici vs
+critiche</td>
+<td><em>modelo, supuestos</em></td>
+</tr>
+<tr>
+<td>FPP</td>
+<td>21-25</td>
+<td>Curva delle combinazioni massime; pendenza negativa; concava = costo
+opp. crescente</td>
+<td><em>FPP, coste de oportunidad</em></td>
+</tr>
+<tr>
+<td>Efficienza e crescita</td>
+<td>26-32</td>
+<td>Dentro = inefficiente (recessione); spostamento verso l’esterno =
+crescita</td>
+<td><em>ineficiencia productiva, recesión, crecimiento
+económico</em></td>
+</tr>
+<tr>
+<td>Micro / Macro</td>
+<td>33-36</td>
+<td>Piccolo vs grande</td>
+<td><em>microeconomía, macroeconomía</em></td>
+</tr>
+<tr>
+<td>Positiva / Normativa</td>
+<td>37-38</td>
+<td>“Com’è” vs “come dovrebbe essere”</td>
+<td><em>economía positiva, normativa</em></td>
+</tr>
+<tr>
+<td>Come studiare</td>
+<td>39</td>
+<td>Studio attivo</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="capitolo-1-contesto-e-utilità-delleconomia-slide-1-6">Capitolo 1
+— Contesto e utilità dell’economia (slide 1-6)</h2>
+<p><strong>Cosa dicono le slide.</strong> La slide 2 riporta la
+citazione di Samuelson e Nordhaus (“Envidiamos al principiante…”):
+l’economia è affascinante per chi la scopre per la prima volta. Le slide
+3-5 (“¿Qué está ocurriendo?”) mostrano titoli di giornale (calo vendite
+auto in Europa, Spagna settimo paese UE per povertà): l’economia spiega
+i fatti di tutti i giorni. La slide 6 elenca <strong>4 motivi per
+studiare Economía</strong>:</p>
+<ol type="1">
+<li><strong>Entender mejor el mundo</strong> (capire meglio il mondo, le
+cause di ciò che incide sulla tua vita).</li>
+<li><strong>Ganar autoestima</strong> (eliminare la sensazione che forze
+misteriose guidino la tua vita).</li>
+<li><strong>Cambiar la sociedad</strong> (capire l’origine dei problemi
+sociali e progettare soluzioni più efficaci).</li>
+<li><strong>Preparar otras materias</strong> (molte materie trattano
+questioni economiche).</li>
+</ol>
+<blockquote>
+<p><strong>Da ricordare</strong> - 4 motivi: capire il mondo, autostima,
+cambiare la società, preparare altre materie. - Le slide 3-5 sono solo
+esempi di notizie, non servono formule.</p>
+<p><strong>Trappole d’esame</strong> - Domanda possibile: “¿Para qué
+sirve estudiar Economía?” → rispondi con i 4 motivi, non inventarne
+altri.</p>
+</blockquote>
+<hr />
+<h2 id="capitolo-2-scarsità-e-scelta-individuale-slide-7-13">Capitolo 2
+— Scarsità e scelta individuale (slide 7-13)</h2>
+<h3 id="definizione-di-economia-slide-8">2.1 Definizione di economia
+(slide 8)</h3>
+<p><strong>La economía</strong> è lo studio del modo in cui individui e
+società decidono di impiegare <strong>risorse scarse</strong> che
+potrebbero avere <strong>usi alternativi</strong> per produrre beni
+diversi e distribuirli per il consumo, presente o futuro, tra le diverse
+persone e gruppi della società (P. Samuelson, Nobel 1970).</p>
+<p>Tre parole da sottolineare: <em>recursos escasos</em>, <em>usos
+alternativos</em>, <em>distribuir</em>.</p>
+<h3 id="escasez-slide-9">2.2 Escasez (slide 9)</h3>
+<p><strong>Recurso escaso</strong> = una risorsa è scarsa quando le
+quantità disponibili <strong>non bastano a soddisfare tutte le necessità
+produttive</strong>. Esempio: non ho abbastanza soldi o tempo per fare
+tutto ciò che voglio. Conseguenza: <strong>gli individui devono prendere
+decisioni (elegir)</strong>.</p>
+<h3 id="scegliere-slide-10-11">2.3 Scegliere (slide 10-11)</h3>
+<p>Per capire come funziona l’economia bisogna capire come i singoli
+fanno le scelte. Studiando economia scopriremo: - principi per capire
+<strong>come gli individui prendono decisioni</strong>; - principi per
+capire <strong>come le decisioni degli individui
+interagiscono</strong>.</p>
+<p>Lo schema di slide 11: <strong>bisogni e desideri illimitati</strong>
++ <strong>risorse scarse</strong> (risorse naturali, lavoro, capitale…)
+→ le persone devono <strong>elegir</strong>. Per questo l’economia è la
+“<strong>ciencia de la elección</strong>”.</p>
+<h3 id="fattori-di-produzione-slide-12">2.4 Fattori di produzione (slide
+12)</h3>
+<p><strong>Factores de producción</strong>: - <strong>Tierra</strong>
+(terra / risorse naturali, <em>recursos naturales</em>) -
+<strong>Trabajo</strong> (lavoro) - <strong>Capital</strong>, che si
+divide in <strong>capital físico</strong> (fabbriche, macchinari,
+uffici, trattori) e <strong>capital humano</strong> (competenze e
+conoscenze delle persone).</p>
+<h3 id="funzione-di-produzione-slide-13">2.5 Funzione di produzione
+(slide 13)</h3>
+<p><strong>La función de producción</strong> è la relazione tra la
+quantità di fattori produttivi usati in un’economia e la quantità di
+output prodotta.</p>
+<p>Schema della slide: <strong>INPUTS</strong> (recursos naturales,
+trabajo, capital, iniciativa empresarial) → <strong>PRODUCCIÓN</strong>
+con la <strong>tecnología</strong> → <strong>OUTPUTS</strong> (bienes y
+servicios).</p>
+<p>Nota: nella slide 13 compare anche <em>iniciativa empresarial</em>
+(imprenditorialità) tra gli input, oltre ai tre fattori della slide
+12.</p>
+<blockquote>
+<p><strong>Da ricordare</strong> - Economia = scelta in condizioni di
+scarsità. Bisogni illimitati + risorse limitate = bisogno di scegliere.
+- Fattori: tierra, trabajo, capital (físico e humano). Input +
+tecnologia → output.</p>
+<p><strong>Trappole d’esame</strong> - Scarsità non vuol dire “poveri”:
+vale anche per i ricchi (tempo, denaro non infiniti). - Il capitale
+umano è capitale (competenze), non “lavoro” in senso di ore. - La
+tecnologia non è un fattore ma ciò che trasforma input in output nella
+funzione di produzione (così nella slide 13).</p>
+</blockquote>
+<hr />
+<h2
+id="capitolo-3-agenti-economici-e-sistemi-economici-slide-14-17">Capitolo
+3 — Agenti economici e sistemi economici (slide 14-17)</h2>
+<h3 id="agentes-económicos-slide-15">3.1 Agentes económicos (slide
+15)</h3>
+<p><strong>Agentes económicos</strong>: insieme di persone o entità che
+svolgono le attività economiche, cioè produzione, compravendita di
+prodotti, prestazione di servizi e consumo di beni e servizi. Sono tre:
+<strong>hogares</strong> (famiglie), <strong>empresas</strong>
+(imprese), <strong>gobierno</strong> (governo).</p>
+<p>Il diagramma (flusso circolare): famiglie, governo e imprese si
+scambiano <strong>bienes</strong> (intercambio de bienes) e
+<strong>factores</strong> (intercambio de factores). Idea: le famiglie
+offrono fattori (lavoro) alle imprese e ricevono beni; il governo
+interagisce con entrambi. Dettagli ulteriori del flusso circolare non
+sono nelle slide.</p>
+<h3 id="sistemas-económicos-slide-16-17">3.2 Sistemas económicos (slide
+16-17)</h3>
+<p><strong>Sistema economico</strong>: il modo in cui le società si
+organizzano per produrre le risorse scarse, merci di valore, e
+distribuirle tra i diversi individui. Deve rispondere a 3 domande: 1.
+<strong>¿Qué producir y cuánto?</strong> 2. <strong>¿Cómo se producen
+los bienes?</strong> 3. <strong>¿Para quién se producen los
+bienes?</strong></p>
+<p>Due modelli estremi: - <strong>Economía de mercado</strong> (libero
+mercato): le decisioni sono dei privati attraverso il mercato. -
+<strong>Economía centralmente planificada</strong>: le decisioni sono
+prese dallo Stato.</p>
+<p>La slide 17 colloca i paesi lungo una linea: da <strong>economia
+pianificata</strong> (Cuba, Cina) a <strong>libero mercato</strong>
+(Hong Kong, USA), con Svezia e Regno Unito in posizioni intermedie. Il
+paese reale è sempre un misto. La slide cita l’<strong>articolo 38 della
+Costituzione spagnola del 1978</strong>: riconosce la libertà d’impresa
+“nel quadro dell’economia di mercato” e ammette, “se del caso”, la
+pianificazione (la Spagna è quindi un’economia di mercato con intervento
+pubblico).</p>
+<blockquote>
+<p><strong>Da ricordare</strong> - 3 agenti: hogares, empresas,
+gobierno. 3 domande: qué, cómo, para quién. - Due sistemi: mercato e
+pianificata; nella realtà sono miscele (Spagna: art. 38 CE 1978).</p>
+<p><strong>Trappole d’esame</strong> - Non confondere le 3 domande con i
+3 agenti. - Non dire che Cuba/Cina sono “puro libero mercato”: la slide
+le mette dal lato pianificato.</p>
+</blockquote>
+<hr />
+<h2 id="capitolo-4-la-scienza-economica-i-modelli-slide-18-20">Capitolo
+4 — La scienza economica: i modelli (slide 18-20)</h2>
+<p><strong>Modelo</strong> = rappresentazione <strong>semplificata della
+realtà</strong> usata per capire meglio situazioni reali. Funzioni
+(slide 19): - analizzare un problema reale in un’economia semplificata;
+- simulare il comportamento dell’economia al computer. Esempio della
+slide: modelli di imposizione per analizzare l’effetto di un cambio
+delle imposte su diversi gruppi di reddito.</p>
+<p><strong>Supuestos</strong> (ipotesi, slide 20), molto importanti nei
+modelli: - <strong>Supuestos simplificadores</strong>: rendono il
+modello più semplice <strong>senza influire in modo importante</strong>
+sulle conclusioni. - <strong>Supuestos críticos</strong>:
+<strong>influenzano molto</strong> le conclusioni. <strong>Se sono
+sbagliati, il modello è sbagliato.</strong> Tutti i modelli hanno uno o
+più supuestos críticos.</p>
+<p>Esempio nostro (approfondimento, non nelle slide): nella FPP si
+assumono solo 2 beni; è un’ipotesi semplificatrice, perché il
+ragionamento vale anche con più beni.</p>
+<blockquote>
+<p><strong>Da ricordare</strong> - Modello = realtà semplificata.
+Ipotesi semplificatrici (non cambiano le conclusioni) vs critiche (le
+cambiano).</p>
+<p><strong>Trappole d’esame</strong> - Un’ipotesi critica errata
+invalida il modello; una semplificatrice no. - “Tutti i modelli hanno
+almeno un supuesto crítico”: vero.</p>
+</blockquote>
+<hr />
+<h2
+id="capitolo-5-la-frontera-de-posibilidades-de-producción-slide-21-25">Capitolo
+5 — La Frontera de Posibilidades de Producción (slide 21-25)</h2>
+<h3 id="definizione-slide-21">5.1 Definizione (slide 21)</h3>
+<p>La <strong>FPP</strong> mostra le <strong>combinazioni di due
+beni</strong> che possono essere prodotte con le <strong>risorse e la
+tecnologia disponibili</strong>.</p>
+<h3 id="la-tabella-slide-22">5.2 La tabella (slide 22)</h3>
+<table>
+<thead>
+<tr>
+<th>Computer</th>
+<th>Auto</th>
+<th>Punto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.000.000</td>
+<td>0</td>
+<td>A</td>
+</tr>
+<tr>
+<td>950.000</td>
+<td>100.000</td>
+<td>B</td>
+</tr>
+<tr>
+<td>850.000</td>
+<td>200.000</td>
+<td>C</td>
+</tr>
+<tr>
+<td>700.000</td>
+<td>300.000</td>
+<td>D</td>
+</tr>
+<tr>
+<td>400.000</td>
+<td>400.000</td>
+<td>E</td>
+</tr>
+<tr>
+<td>0</td>
+<td>500.000</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+<p>(Le lettere A-F sono quelle del grafico; nella slide 23 il grafico è
+usato come esempio generico.)</p>
+<h3 id="il-grafico-slide-23-gráfica-1">5.3 Il grafico (slide 23,
+“Gráfica 1”)</h3>
+<ul>
+<li><strong>Asse verticale</strong>: Ordenadores. <strong>Asse
+orizzontale</strong>: Coches. Le unità sono <strong>quantità di
+beni</strong>, non euro (slide 24).</li>
+<li><strong>Punto A</strong> (0 auto, 1.000.000 computer): tutte le
+risorse vanno ai computer (le slide dicono “otros bienes” e “cuidados
+sanitarios” perché il grafico è riciclato da un esempio sanitario; usa
+l’etichetta degli assi).</li>
+<li><strong>Spostamento A → B</strong>: si tolgono risorse ai computer
+per darle all’altro bene.</li>
+<li><strong>Punto F</strong> (500.000 auto, 0 computer): tutte le
+risorse all’altro bene.</li>
+<li><strong>Punto W</strong> (200.000 auto, 400.000 computer) è
+<strong>interno</strong>: producibile ma inefficiente (vedi cap.
+6).</li>
+</ul>
+<h3 id="cosa-significano-le-zone-slide-24">5.4 Cosa significano le zone
+(slide 24)</h3>
+<ul>
+<li><strong>Punti sulla curva</strong> = quantità
+<strong>massime</strong> producibili (uso pieno ed efficiente).</li>
+<li><strong>Punti fuori dalla curva</strong> =
+<strong>impossibili</strong> (assegnazioni di risorse
+irrealizzabili).</li>
+<li><strong>La scelta sociale</strong> è limitata ai punti <strong>sulla
+FPP o dentro</strong>: <em>producción factible</em>.</li>
+</ul>
+<h3 id="costo-opportunità-slide-25">5.5 Costo opportunità (slide
+25)</h3>
+<p><strong>Coste de oportunidad</strong> (<em>renuncia</em>) = ciò a cui
+si rinuncia (la migliore alternativa) per ottenere una cosa. Sulla FPP:
+per produrre più di un bene bisogna produrne meno dell’altro.</p>
+<ul>
+<li><strong>La FPP ha pendenza negativa</strong> perché le risorse sono
+scarse.</li>
+<li><strong>La concavità</strong> (curva bombata verso l’esterno) indica
+<strong>coste de oportunidad creciente</strong>: più auto produciamo,
+più computer dobbiamo sacrificare per ogni auto aggiuntiva (e
+viceversa).</li>
+</ul>
+<p><strong>Esempio numerico dalla slide 22</strong> (costo di +100.000
+auto, tutto in migliaia di computer): | Passaggio | Auto in più |
+Computer persi | Costo di 1 auto | |—|—|—|—| | A→B | +100.000 | 50.000 |
+0,5 computer | | B→C | +100.000 | 100.000 | 1 computer | | C→D |
++100.000 | 150.000 | 1,5 computer | | D→E | +100.000 | 300.000 | 3
+computer | | E→F | +100.000 | 400.000 | 4 computer |</p>
+<p>Il costo per auto cresce: ecco la concavità.</p>
+<p><strong>Esempio della slide 25</strong> (grafico con computer 0-30 e
+auto 0-40): situazioni A (0 auto, 30 computer), B (20 auto, 25
+computer), C (30 auto, 20 computer). Da A a B: +20 auto, -5 computer
+(0,25 per auto). Da B a C: +10 auto, -5 computer (0,5 per auto).
+Cresce.</p>
+<p><strong>Formula</strong> (approfondimento per i calcoli): costo di
+opportunità del bene X in termini di Y tra due punti:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><msub><mi>O</mi><mi>X</mi></msub><mo>=</mo><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Δ</mi><mi>Y</mi><mo stretchy="false" form="prefix">|</mo></mrow><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="normal">Δ</mi><mi>X</mi><mo stretchy="false" form="prefix">|</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">CO_X = \frac{|\Delta Y|}{|\Delta X|}</annotation></semantics></math></p>
+<blockquote>
+<p><strong>Da ricordare</strong> - FPP = combinazioni massime con
+risorse e tecnologia date. Sulla curva: massimo/efficiente; dentro:
+fattibile ma inefficiente; fuori: impossibile. - Pendenza negativa =
+scarsità/costo opp. Concava = costo opp. crescente. Assi = quantità, non
+euro.</p>
+<p><strong>Trappole d’esame</strong> - Il costo di opportunità va
+espresso nell’<strong>altro bene</strong> (non in euro). - Attenzione
+alla direzione: costo di +X in termini di Y si legge dividendo Y perso
+per X guadagnato. - Una FPP lineare (retta) ha costo opp. costante; la
+concava ha costo crescente.</p>
+</blockquote>
+<hr />
+<h2
+id="capitolo-6-efficienza-recessione-e-crescita-economica-slide-26-32">Capitolo
+6 — Efficienza, recessione e crescita economica (slide 26-32)</h2>
+<h3 id="inefficienza-produttiva-slide-26">6.1 Inefficienza produttiva
+(slide 26)</h3>
+<p><strong>Ineficiencia productiva</strong>: si è
+<strong>dentro</strong> la FPP; si può produrre <strong>almeno un bene
+in più senza togliere risorse agli altri</strong>. Cause (slide):
+<strong>despilfarro de recursos</strong> (spreco) e
+<strong>recesión</strong>. La slide aggiunge “Justicia vs Eficiencia
+(equidad paretiana)”: segnala che efficienza e giustizia sono temi
+diversi (approfondimento: efficiente “alla Pareto” = non si può
+migliorare qualcuno senza peggiorare qualcun altro; un punto efficiente
+può comunque essere ingiusto).</p>
+<h3 id="recessione-slide-27-gráfica-2-producción-y-desempleo">6.2
+Recessione (slide 27, “Gráfica 2: Producción y Desempleo”)</h3>
+<ol type="1">
+<li>In recessione l’economia sta in A, <strong>dentro la FPP</strong>
+(risorse, per es. lavoro, non pienamente usate: disoccupazione).</li>
+<li>Quando si esce dalla recessione ci si <strong>muove verso la
+FPP</strong> (punto B): <strong>aumenta la produzione di tutti e due i
+beni</strong> (la slide dice beni di capitale e beni finali).</li>
+</ol>
+<h3 id="crescita-economica-slide-28-31">6.3 Crescita economica (slide
+28-31)</h3>
+<p>Se l’economia è sulla FPP non si può produrre di più. <strong>Per
+produrre di più la FPP deve spostarsi verso l’esterno</strong>: cresce
+la <strong>capacità produttiva</strong>. Due categorie di cause: 1.
+<strong>Più risorse</strong> (soprattutto <strong>capitale</strong>):
+capitale fisico (fabbriche, uffici, trattori, attrezzature mediche) e
+capitale umano (competenze di medici, ingegneri, informatici…). 2.
+<strong>Cambiamento tecnologico</strong>: produrre di più con la stessa
+quantità di risorse.</p>
+<p><strong>Grafico slide 29</strong>: FPP originale A–D–F (punto A:
+1.000.000 computer; F: 500.000 auto; D: 300.000 auto e 700.000
+computer). La nuova FPP tratteggiata A’–F’ ha A’ = 1.100.000 e F’ =
+600.000: si sposta verso l’esterno. In D si può passare a J o H e quindi
+<strong>produrre più auto, più computer, o entrambi</strong>.</p>
+<p><strong>Slide 30-31</strong>: capitale e tecnologia vanno spesso
+insieme. Esempio: lo <strong>scanner</strong> permette di salvare più
+vite con le stesse risorse. Se il progresso tecnologico riguarda un solo
+bene (le auto, nell’esempio della slide 31), la FPP <strong>si sposta
+orizzontalmente da F a F’</strong> (solo l’intercetta di quell’asse
+cresce, <strong>senza spostamento verticale</strong>). Allora la società
+può: (3) produrre più auto senza togliere risorse ad altri settori,
+oppure (4) produrre di più di entrambi i beni (spostando risorse). Il
+progresso permette di <strong>spostare risorse senza
+danneggiare</strong> l’altro settore.</p>
+<p><em>Nota</em>: nelle slide il testo parla di “sanità” e “scanner” ma
+gli assi sono “Coches” e “Ordenadores”: l’esempio è riciclato. Usa
+sempre le etichette degli assi del tuo grafico.</p>
+<h3 id="riassunto-slide-32-elección-social">6.4 Riassunto (slide 32):
+“Elección social”</h3>
+<p>Quattro idee: <strong>coste de oportunidad</strong>,
+<strong>eficiencia</strong>, <strong>recesión y desempleo de
+recursos</strong>, <strong>crecimiento económico</strong>.</p>
+<blockquote>
+<p><strong>Da ricordare</strong> - Dentro la FPP = inefficienza (spreco,
+recessione/disoccupazione). Verso la FPP = si produce di più di tutto. -
+Crescita = FPP si sposta verso l’esterno per più capitale (fisico/umano)
+o tecnologia. - Progresso su un solo bene = spostamento della curva solo
+su quell’asse (orizzontale per le auto).</p>
+<p><strong>Trappole d’esame</strong> - Spostamento <em>lungo</em> la
+curva (cambio di combinazione, costo opp.) ≠ spostamento <em>della</em>
+curva (crescita/riduzione). - Un punto fuori dalla FPP diventa possibile
+solo con crescita, non con “più efficienza”. - Recessione non è
+spostamento della FPP: è un punto dentro la stessa FPP.</p>
+</blockquote>
+<hr />
+<h2 id="capitolo-7-microeconomia-e-macroeconomia-slide-33-36">Capitolo 7
+— Microeconomia e Macroeconomia (slide 33-36)</h2>
+<ul>
+<li><strong>Microeconomía</strong> (da <em>mikros</em> = piccolo):
+studio del comportamento di <strong>famiglie, imprese e
+governi</strong>: le scelte che fanno e l’interazione in <strong>mercati
+specifici</strong>. Guarda il lato individuale. Temi: scarsità, costo
+opp. e vantaggi comparati; formazione dei prezzi (domanda e offerta);
+elasticità; scelta del consumatore; produzione e costi; mercati e
+concorrenza (perfetta e imperfetta); mercato del lavoro e uguaglianza;
+capitale e investimento; efficienza. Corrisponde ai Temi 2, 3, 4 del
+corso (leggi del mercato, fallimenti del mercato, mercato del lavoro e
+disuguaglianza).</li>
+<li><strong>Macroeconomía</strong> (da <em>makros</em> = grande): studio
+dell’<strong>economia nel suo insieme</strong>; guarda il quadro
+generale e ignora i dettagli. Temi: crescita, disoccupazione
+(<em>paro</em>), inflazione, deficit commerciale, deficit pubblico,
+intervento dello Stato. Corrisponde ai Temi 5, 6, 7 (problemi economici
+e misurazione; consumo, investimento, spesa pubblica e settore estero;
+sistema monetario e finanziario).</li>
+</ul>
+<blockquote>
+<p><strong>Da ricordare</strong> - Micro = pezzi (famiglie, imprese,
+mercati); Macro = insieme (crescita, paro, inflazione, deficit).</p>
+<p><strong>Trappole d’esame</strong> - Il paro (disoccupazione) è un
+tema macro, il prezzo di un mercato specifico è micro. - “Micro” non
+significa “piccole imprese” ma analisi di decisioni individuali.</p>
+</blockquote>
+<hr />
+<h2
+id="capitolo-8-economia-positiva-e-normativa-rami-come-studiare-slide-37-39">Capitolo
+8 — Economia positiva e normativa; rami; come studiare (slide
+37-39)</h2>
+<h3 id="positiva-vs-normativa-slide-37">8.1 Positiva vs normativa (slide
+37)</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th></th>
+<th><strong>Economía positiva</strong></th>
+<th><strong>Economía normativa</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Studia</td>
+<td><strong>come funziona</strong> l’attività economica</td>
+<td><strong>cosa dovrebbe essere</strong></td>
+</tr>
+<tr>
+<td>Natura</td>
+<td>Risultati <strong>oggettivi</strong></td>
+<td><strong>Giudizi di valore</strong>, identifica problemi e
+soluzioni</td>
+</tr>
+<tr>
+<td>Verifica</td>
+<td>Si può <strong>testare con i fatti</strong> (e solo con i fatti); la
+slide precisa che non importa se è vera o falsa</td>
+<td><strong>Non si può provare o rifiutare con i fatti</strong>: dipende
+dai valori</td>
+</tr>
+<tr>
+<td>Parole spia</td>
+<td>“è”, “aumenta”, “causa”, “riduce”</td>
+<td>“deve”, “dovrebbe”, “è consigliabile”, “migliore”, “peggiore”</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rami-delleconomia-slide-38">8.2 Rami dell’economia (slide
+38)</h3>
+<p>Schema: <strong>Economía positiva</strong> si divide in
+<strong>Economía pura / analítica</strong> (<em>Microeconomía,
+Macroeconomía</em>) ed <strong>Economía aplicada / descriptiva</strong>
+(es. <em>economía española, andaluza</em>, <em>historia económica</em>).
+<strong>Economía normativa</strong> corrisponde alla <strong>Política
+económica</strong>.</p>
+<h3 id="come-studiare-slide-39">8.3 Come studiare (slide 39)</h3>
+<p>Seguire la lezione ≠ imparare. Studia <strong>attivamente</strong>:
+chiudi il libro e ripeti; leggi con la matita in mano; elenca i passi di
+ogni argomento logico; ripercorri le relazioni causa-effetto di ogni
+modello; <strong>disegna i grafici</strong>; collega i principi con ciò
+che impari.</p>
+<blockquote>
+<p><strong>Da ricordare</strong> - Positiva = fatti verificabili;
+normativa = valori, “deve/dovrebbe”. - Positiva: pura (micro, macro) +
+applicata; normativa: politica economica.</p>
+<p><strong>Trappole d’esame</strong> - Un’affermazione positiva può
+essere <strong>falsa</strong> ed essere comunque positiva (è
+verificabile). - Parole come “mejor”, “peor”, “aconseja”, “debe” quasi
+sempre indicano normativa.</p>
+</blockquote>
+<hr />
+<h2 id="esercizi-epd-1-cosa-scrivere-sul-foglio-desame">Esercizi EPD 1 —
+cosa scrivere sul foglio d’esame</h2>
+<p><strong>Metodo generale per ogni FPP</strong>: (1) assi con nome e
+unità; (2) tabella dei punti; (3) punti e curva; (4) lettere per i
+punti; (5) risposta scritta breve.</p>
+<h3 id="ejercicio-1-lucas-giorni-di-studio-e-voti">Ejercicio 1 — Lucas:
+giorni di studio e voti</h3>
+<p><strong>Cosa chiede.</strong> 8 giorni da dividere tra Economía
+Política (EP) e Derecho. La tabella dà il voto in ciascuna materia
+secondo i giorni dedicati. Le “risorse” sono i giorni, la “produzione”
+sono i voti.</p>
+<p><strong>Idea chiave.</strong> Se Lucas studia
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+giorni EP, gliene restano
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn><mo>−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">8-x</annotation></semantics></math>
+per Derecho. Per ogni
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+si legge il voto EP in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+e il voto Derecho in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn><mo>−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">8-x</annotation></semantics></math>.
+Questa è la combinazione massima: quindi la FPP.</p>
+<p><strong>a) Costruzione della FPP.</strong> Asse orizzontale: nota EP;
+asse verticale: nota Derecho (puoi scegliere l’inverso, dichiaralo).</p>
+<table>
+<thead>
+<tr>
+<th>Giorni EP</th>
+<th>Giorni Derecho</th>
+<th>Nota EP</th>
+<th>Nota Derecho</th>
+<th>Punto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>8</td>
+<td>0</td>
+<td>10</td>
+<td>A</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>2</td>
+<td>9,5</td>
+<td>B</td>
+</tr>
+<tr>
+<td>2</td>
+<td>6</td>
+<td>4</td>
+<td>8,9</td>
+<td>C</td>
+</tr>
+<tr>
+<td>3</td>
+<td>5</td>
+<td>6</td>
+<td>8,2</td>
+<td>D</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>6,5</td>
+<td>6,4</td>
+<td>E</td>
+</tr>
+<tr>
+<td>5</td>
+<td>3</td>
+<td>7</td>
+<td>5,5</td>
+<td>F</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2</td>
+<td>7,5</td>
+<td>4,5</td>
+<td>G</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1</td>
+<td>9</td>
+<td>3</td>
+<td>H</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0</td>
+<td>10</td>
+<td>0</td>
+<td>I</td>
+</tr>
+</tbody>
+</table>
+<p>Disegno: asse x da 0 a 10, asse y da 0 a 10; segna i 9 punti (0;10),
+(2;9,5), (4;8,9), (6;8,2), (6,5;6,4), (7;5,5), (7,5;4,5), (9;3), (10;0)
+e uniscili. Pendenza negativa. <strong>Nota</strong>: la curva non è
+perfettamente “liscia”: le note della tabella crescono in modo
+irregolare (per esempio in Derecho il passaggio da 4 a 5 giorni dà +1,8
+punti, mentre da 3 a 4 dà +0,9), quindi la curva ha qualche tratto più
+piatto. Disegnala con i punti dati senza forzare una forma.</p>
+<p><strong>b) Costo di opportunità da 8,2 a 8,9 in Derecho.</strong>
+Derecho 8,2 = 5 giorni (D); 8,9 = 6 giorni (C). Passare da D a C
+significa 1 giorno in più su Derecho e quindi 1 in meno su EP: da 3
+giorni (nota 6) a 2 giorni (nota 4). Calcolo: guadagno in Derecho
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>8</mn><mo>,</mo><mn>9</mn><mo>−</mo><mn>8</mn><mo>,</mo><mn>2</mn><mo>=</mo><mn>0</mn><mo>,</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">=8,9-8,2=0,7</annotation></semantics></math>;
+perdita in EP
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>6</mn><mo>−</mo><mn>4</mn><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">=6-4=2</annotation></semantics></math>.
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>O</mi><mo>=</mo><mn>2</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> punti di EP (per 0,7 punti di Derecho)</mtext></mrow><mspace width="0.278em"></mspace><mo>⇒</mo><mspace width="0.278em"></mspace><mfrac><mn>2</mn><mrow><mn>0</mn><mo>,</mo><mn>7</mn></mrow></mfrac><mo>≈</mo><mn>2</mn><mo>,</mo><mn>86</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> punti EP per ogni punto di Derecho</mtext></mrow></mrow><annotation encoding="application/x-tex">CO = 2 \text{ punti di EP (per 0,7 punti di Derecho)} \;\Rightarrow\; \frac{2}{0{,}7}\approx 2{,}86 \text{ punti EP per ogni punto di Derecho}</annotation></semantics></math>
+<strong>Definizione</strong>: il <strong>coste de oportunidad</strong> è
+il valore della migliore alternativa a cui si rinuncia quando si sceglie
+qualcosa; qui, la nota di EP che si perde per studiare un giorno in più
+Derecho.</p>
+<p><strong>c) Almeno un “notable” (≥ 7) in entrambe?</strong> Per EP ≥ 7
+servono almeno 5 giorni (nota 7). Per Derecho ≥ 7 servono almeno 5
+giorni (nota 8,2; con 4 giorni solo 6,4). Totale minimo: 5+5=10 giorni,
+ma ne ha solo 8. <strong>Non è possibile.</strong> Controllo sui punti:
+con 5 giorni EP la nota Derecho è 5,5; con 3 giorni EP la nota EP è 6.
+Non esiste riga con entrambe ≥ 7. (Il punto desiderato (7;7) è fuori
+dalla FPP.)</p>
+<p><strong>d) Media più alta.</strong> Media
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mfrac><mrow><mi>E</mi><mi>P</mi><mo>+</mo><mi>D</mi><mi>e</mi><mi>r</mi></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">=\frac{EP+Der}{2}</annotation></semantics></math>:</p>
+<table>
+<thead>
+<tr>
+<th>Giorni EP</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Media</td>
+<td>5</td>
+<td>5,75</td>
+<td>6,45</td>
+<td><strong>7,1</strong></td>
+<td>6,45</td>
+<td>6,25</td>
+<td>6</td>
+<td>6</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>Il massimo è con <strong>3 giorni a EP e 5 a Derecho</strong>: note 6
+e 8,2, media 7,1.</p>
+<p><strong>e) Più ore/giorni disponibili.</strong> Aumentano le risorse:
+la FPP <strong>si sposta verso l’esterno</strong> (crescita). Con più
+giorni Lucas può ottenere note più alte in entrambe le materie.
+Attenzione: la nota massima è 10, quindi il limite è il tetto del voto
+(approfondimento, non nelle slide). Con più giorni (ad esempio 10), la
+condizione dei genitori del punto c diventerebbe possibile.</p>
+<p><strong>Modello di risposta (spagnol)</strong> - a) “He representado
+en el eje X la nota de Economía Política y en el eje Y la de Derecho.
+Cada punto es la combinación máxima con 8 días: si dedica x días a EP,
+dedica 8-x a Derecho.” - b) “Pasar de 8,2 a 8,9 en Derecho exige un día
+más de Derecho, es decir, un día menos de EP: la nota baja de 6 a 4. El
+coste de oportunidad es de 2 puntos de EP. El coste de oportunidad es
+aquello a lo que se renuncia al elegir una alternativa.” - c) “No es
+posible: necesita 5 días para sacar 7 en cada asignatura (10 días) y
+solo tiene 8. El punto (7,7) queda fuera de la FPP.” - d) “Debe estudiar
+3 días EP y 5 días Derecho: notas 6 y 8,2, media 7,1 (la más alta).” -
+e) “Aumentan los recursos disponibles, la FPP se desplaza hacia fuera:
+crecimiento.”</p>
+<hr />
+<h3 id="ejercicio-2-maría-conjunto-presupuestario">Ejercicio 2 — María:
+conjunto presupuestario</h3>
+<p><strong>Cosa chiede.</strong> Presupuesto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><mn>120</mn></mrow><annotation encoding="application/x-tex">M=120</annotation></semantics></math>
+€. Cinema 6 €/entrata, libri 3 €/libro. Traccia il <strong>conjunto
+presupuestario</strong> (retta di bilancio, che qui fa da FPP) e i costi
+di opportunità; poi tre casi.</p>
+<p><strong>Formula.</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>C</mi></msub><mo>⋅</mo><mi>C</mi><mo>+</mo><msub><mi>P</mi><mi>L</mi></msub><mo>⋅</mo><mi>L</mi><mo>=</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">P_C\cdot C+P_L\cdot L=M</annotation></semantics></math>.
+Intercette:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mi>M</mi><mi>/</mi><msub><mi>P</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">C_{max}=M/P_C</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mi>M</mi><mi>/</mi><msub><mi>P</mi><mi>L</mi></msub></mrow><annotation encoding="application/x-tex">L_{max}=M/P_L</annotation></semantics></math>.
+Costo opp. di 1 cinema:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>C</mi></msub><mi>/</mi><msub><mi>P</mi><mi>L</mi></msub></mrow><annotation encoding="application/x-tex">P_C/P_L</annotation></semantics></math>
+libri; di 1 libro:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>L</mi></msub><mi>/</mi><msub><mi>P</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">P_L/P_C</annotation></semantics></math>
+cinema. È una <strong>retta</strong> (costo opp. costante).</p>
+<p><strong>Base.</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mn>120</mn><mi>/</mi><mn>6</mn><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">C_{max}=120/6=20</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mn>120</mn><mi>/</mi><mn>3</mn><mo>=</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">L_{max}=120/3=40</annotation></semantics></math>.
+Disegna: asse x = cinema (0-20+), asse y = libri (0-40+). Retta da
+(0;40) a (20;0). Punti utili: (10;20). Insieme di bilancio = triangolo
+sotto la retta. - Costo opp. di un cinema:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mi>/</mi><mn>3</mn><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">6/3=2</annotation></semantics></math>
+libri. - Costo opp. di un libro:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>/</mi><mn>6</mn><mo>=</mo><mn>0</mn><mo>,</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">3/6=0{,}5</annotation></semantics></math>
+cinema.</p>
+<p><strong>a) +18 €/mese.</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><mn>138</mn></mrow><annotation encoding="application/x-tex">M=138</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mn>138</mn><mi>/</mi><mn>6</mn><mo>=</mo><mn>23</mn></mrow><annotation encoding="application/x-tex">C_{max}=138/6=23</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mn>138</mn><mi>/</mi><mn>3</mn><mo>=</mo><mn>46</mn></mrow><annotation encoding="application/x-tex">L_{max}=138/3=46</annotation></semantics></math>.
+<strong>Spostamento parallelo verso l’esterno</strong>; pendenza uguale:
+costi opp. invariati (2 libri per cinema; 0,5 cinema per libro).</p>
+<p><strong>b) Cinema a 5 €.</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mn>120</mn><mi>/</mi><mn>5</mn><mo>=</mo><mn>24</mn></mrow><annotation encoding="application/x-tex">C_{max}=120/5=24</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">L_{max}=40</annotation></semantics></math>
+(invariato). La retta <strong>ruota</strong> attorno all’intercetta dei
+libri (0;40). Costo opp. del cinema:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi>/</mi><mn>3</mn><mo>≈</mo><mn>1</mn><mo>,</mo><mn>67</mn></mrow><annotation encoding="application/x-tex">5/3\approx1{,}67</annotation></semantics></math>
+libri; del libro:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>/</mi><mn>5</mn><mo>=</mo><mn>0</mn><mo>,</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">3/5=0{,}6</annotation></semantics></math>
+cinema.</p>
+<p><strong>c) Libri a 6 €.</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mn>120</mn><mi>/</mi><mn>6</mn><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">L_{max}=120/6=20</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">C_{max}=20</annotation></semantics></math>
+(invariato). La retta ruota attorno all’intercetta del cinema (20;0).
+Costo opp. del cinema:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mi>/</mi><mn>6</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">6/6=1</annotation></semantics></math>
+libro; del libro: 1 cinema. La retta ha pendenza -1.</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Caso</th>
+<th>Max cinema</th>
+<th>Max libri</th>
+<th>CO cinema (libri)</th>
+<th>CO libro (cinema)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td>20</td>
+<td>40</td>
+<td>2</td>
+<td>0,5</td>
+</tr>
+<tr>
+<td>a) +18 €</td>
+<td>23</td>
+<td>46</td>
+<td>2</td>
+<td>0,5</td>
+</tr>
+<tr>
+<td>b) Cinema 5 €</td>
+<td>24</td>
+<td>40</td>
+<td>1,67</td>
+<td>0,6</td>
+</tr>
+<tr>
+<td>c) Libro 6 €</td>
+<td>20</td>
+<td>20</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interpretazione</strong>: l’esercizio dice “FPP” ma si tratta
+di rette di bilancio (non c’è tecnologia ma prezzi e reddito).
+Scrivilo.</p>
+<p><strong>Modello di risposta</strong> - “La restricción presupuestaria
+es 6C + 3L = 120. Cortes: 20 entradas de cine y 40 libros.” - “Coste de
+oportunidad del cine: 2 libros; de un libro: 0,5 entradas.” - a)
+“Desplazamiento paralelo hacia fuera (23 y 46); mismos costes de
+oportunidad.” - b) “Gira alrededor del corte de libros: 24 entradas, 40
+libros; el cine cuesta 1,67 libros.” - c) “Gira alrededor del corte del
+cine: 20 y 20; un libro cuesta 1 entrada.”</p>
+<hr />
+<h3 id="ejercicio-3-confitería-tartas-y-pasteles">Ejercicio 3 —
+Confitería (tartas y pasteles)</h3>
+<p><strong>Cosa chiede.</strong> 8 lavoratori, tutti usati. Se
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
+lavorano sulle torte,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn><mo>−</mo><mi>w</mi></mrow><annotation encoding="application/x-tex">8-w</annotation></semantics></math>
+sui pasticcini. Assi: <strong>tartas orizzontale, pasteles
+verticale</strong> (indicato nella nota).</p>
+<p><strong>Costruzione.</strong> | Lav. tartas | Tartas | Lav. pasteles
+| Kg pasteles | Punto | |—|—|—|—|—| | 0 | 0 | 8 | 33 | A (0;33) | | 2 |
+22 | 6 | 30 | B (22;30) | | 4 | 38 | 4 | 25 | C (38;25) | | 6 | 48 | 2 |
+15 | D (48;15) | | 8 | 55 | 0 | 0 | E (55;0) |</p>
+<p>Disegno: x da 0 a 60, y da 0 a 35. Unisci A-B-C-D-E: curva concava a
+pendenza negativa. Uso di scale: x ogni 10, y ogni 5.</p>
+<p><strong>a) Significato.</strong> Un punto <strong>sulla
+frontiera</strong> = produzione <strong>massima/efficiente</strong>: usa
+tutti i lavoratori e la materia prima con la tecnologia disponibile; per
+produrre di più di un prodotto bisogna produrne meno dell’altro. Un
+punto <strong>sotto</strong> = produzione <strong>ineficiente</strong>:
+si potrebbe produrre di più di uno (o di entrambi) senza togliere nulla
+all’altro; ci sono risorse sprecate o inutilizzate (es. lavoratori
+inattivi, cattiva organizzazione).</p>
+<p><strong>b) Sopra la frontiera?</strong> <strong>No</strong>: con le
+risorse e la tecnologia attuali è impossibile (<em>inalcanzable</em>).
+Solo con crescita (più lavoratori, capitale, tecnologia).</p>
+<p><strong>c) Da 38 a 48 torte.</strong> Da C (38;25) a D (48;15): +10
+torte, i pasticcini scendono da 25 a 15: costo opp. <strong>10 kg di
+pasticcini</strong> in totale, cioè
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mi>/</mi><mn>10</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">10/10=1</annotation></semantics></math>
+kg per torta.</p>
+<p><strong>d) Cioccolato più economico.</strong> Interpretazione
+adottata: il costo della materia prima scende e, con un
+<strong>presupuesto fijo</strong>, l’impresa può permettersi più
+cioccolato → può produrre <strong>più torte</strong> con gli stessi
+lavoratori. L’intercetta delle torte si sposta a destra (&gt;55), quella
+dei pasticcini (33) resta uguale: la FPP <strong>ruota/si sposta verso
+l’esterno sul lato delle torte</strong>. Se invece il limite fossero
+solo i lavoratori e non la materia prima, non cambierebbe nulla:
+<strong>scrivi la tua interpretazione</strong>.</p>
+<p><strong>Modello di risposta</strong> - a) “En la frontera: producción
+eficiente, usa todos los trabajadores y la materia prima. Por debajo:
+producción ineficiente, hay recursos desaprovechados.” - b) “No, es
+inalcanzable con los recursos y la tecnología actuales.” - c) “Se pasa
+de 25 a 15 kg de pasteles: coste de oportunidad = 10 kg de pasteles (1
+kg por tarta).” - d) “La FPP se desplaza hacia fuera en el eje de las
+tartas (se pueden producir más tartas con el mismo presupuesto); el
+corte de pasteles no cambia.”</p>
+<hr />
+<h3 id="ejercicio-4-tabaco-y-cerveza">Ejercicio 4 — Tabaco y
+cerveza</h3>
+<p><strong>Assi scelti</strong>: tabaco orizzontale, cerveza verticale
+(dichiaralo).</p>
+<p><strong>a) Punti.</strong> A (100;0), B (80;30), C (60;50), D
+(40;60), E (20;65), F (0;68). Scala x 0-100, y 0-70. Unisci in curva
+concava (bombata verso l’esterno).</p>
+<p><strong>b) (50;30)?</strong> <strong>Fattibile ma
+inefficiente.</strong> Sulla frontiera, con 50 t di tabacco, tra C
+(60;50) e D (40;60) si possono produrre circa 55 t di birra (&gt;30). Il
+punto è <strong>dentro la FPP</strong> (risorse non usate pienamente).
+Un punto è possibile se è sulla frontiera o dentro.</p>
+<p><strong>c) Da 20 a 40 t di tabacco.</strong> Da E (20;65) a D
+(40;60): la birra scende da 65 a 60. Costo opp. = <strong>5 t di
+birra</strong>, cioè 0,25 t di birra per t di tabacco.</p>
+<p>(Controllo costo crescente: F→E 3/20=0,15; E→D 5/20=0,25; D→C
+10/20=0,5; C→B 20/20=1; B→A 30/20=1,5.)</p>
+<p><strong>d) Catastrofe: tabacco dimezzato.</strong> Interpretazione
+adottata: la catastrofe colpisce solo il tabacco: la quantità massima di
+tabacco si dimezza a ogni livello (la birra resta uguale).</p>
+<table>
+<thead>
+<tr>
+<th>Combinazione</th>
+<th>Tabacco nuovo</th>
+<th>Birra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A’</td>
+<td>50</td>
+<td>0</td>
+</tr>
+<tr>
+<td>B’</td>
+<td>40</td>
+<td>30</td>
+</tr>
+<tr>
+<td>C’</td>
+<td>30</td>
+<td>50</td>
+</tr>
+<tr>
+<td>D’</td>
+<td>20</td>
+<td>60</td>
+</tr>
+<tr>
+<td>E’</td>
+<td>10</td>
+<td>65</td>
+</tr>
+<tr>
+<td>F’</td>
+<td>0</td>
+<td>68</td>
+</tr>
+</tbody>
+</table>
+<p>La FPP si sposta verso l’interno lungo l’asse del tabacco:
+l’intercetta sul tabacco passa da 100 a 50, quella sulla birra (68)
+resta. Se invece fosse dimezzata anche la birra, la tabella cambierebbe:
+<strong>scrivi l’interpretazione</strong>.</p>
+<p><strong>Modello di risposta</strong> - b) “Es factible pero
+ineficiente: el punto está por debajo de la FPP, no se usan todos los
+recursos.” - c) “El coste de oportunidad es 5 toneladas de cerveza (de
+65 a 60).” - d) “La FPP se contrae hacia dentro en el eje del tabaco:
+corte 50, el de cerveza no cambia.”</p>
+<hr />
+<h3 id="ejercicio-5-positiva-o-normativa">Ejercicio 5 — Positiva o
+normativa</h3>
+<p><strong>Regola</strong>: se si può verificare con i fatti →
+<strong>positiva</strong>; se contiene giudizi di valore (“debe”,
+“aconseja”, “mejor”) → <strong>normativa</strong>.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Frase</th>
+<th>Risposta</th>
+<th>Motivo (da scrivere)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a) Il numero di disoccupati è aumentato a settembre</td>
+<td><strong>Positiva</strong></td>
+<td>Es un hecho comprobable con datos.</td>
+</tr>
+<tr>
+<td>b) Il calo dell’occupazione consiglia misure per dinamizzare
+l’economia</td>
+<td><strong>Normativa</strong></td>
+<td>Recomienda lo que se debería hacer (juicio de valor).</td>
+</tr>
+<tr>
+<td>c) Il reddito USA è maggiore di quello del Portogallo</td>
+<td><strong>Positiva</strong></td>
+<td>Se verifica con estadísticas.</td>
+</tr>
+<tr>
+<td>d) Gli statunitensi vivono meglio dei portoghesi</td>
+<td><strong>Normativa</strong></td>
+<td>“Vivir mejor” depende de valores (no se prueba solo con
+hechos).</td>
+</tr>
+<tr>
+<td>e) Il sistema sanitario pubblico deve garantire assistenza a
+tutti</td>
+<td><strong>Normativa</strong></td>
+<td>“Debe”: juicio de valor.</td>
+</tr>
+<tr>
+<td>f) L’aumento dell’Euribor riduce la capacità di risparmio delle
+famiglie</td>
+<td><strong>Positiva</strong></td>
+<td>Relación causa-efecto contrastable con datos.</td>
+</tr>
+<tr>
+<td>g) Il decentramento dei servizi pubblici ne migliora la
+gestione</td>
+<td><strong>Normativa (discutibile)</strong></td>
+<td>“Mejora” implica un juicio de valor sobre qué es mejor gestión; si
+se midiera con indicadores objetivos podría ser contrastable.</td>
+</tr>
+<tr>
+<td>h) Il calo della natalità mette a rischio le pensioni nel lungo
+periodo</td>
+<td><strong>Positiva</strong></td>
+<td>Es una previsión/relación causa-efecto contrastable con datos
+demográficos.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ambiguità</strong>: g) e h) sono le più discutibili. Scrivi
+sempre il motivo: la risposta senza spiegazione non basta.</p>
+<hr />
+<p><em>Fine guida.</em> Rivedi le tabelle numeriche (es. 1, 3, 4) a mano
+una volta: all’esame i numeri possono cambiare, il metodo no.</p>
+</body>
+</html>

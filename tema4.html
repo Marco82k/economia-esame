@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.13" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tema 4 — La teoría de la distribución (mercados de factores, mercado de trabajo y desigualdad)</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
+      background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        color-scheme: light only;
+      }
+      html, body, pre, code {
+        background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
+        color: black;
+      }
+      pre, code {
+        padding: 0;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a, a:visited {
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
+      color: #606060;
+      color: light-dark(#606060, #b6b6b6);
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid currentColor;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+    }
+    th {
+      border-top: 1px solid currentColor;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  :root{--bg:#fbfaf7;--card:#ffffff;--ink:#1f2328;--muted:#5d636b;--line:#e2ded4;--accent:#2f5d8a;--quote:#f1efe8;color-scheme:light}
+  @media (prefers-color-scheme: dark){:root{--bg:#16171a;--card:#1f2024;--ink:#e9eaed;--muted:#a3a7ae;--line:#33353b;--accent:#86b6e6;--quote:#23252a;color-scheme:dark}}
+  html{background:var(--bg)}
+  body{max-width:820px;margin:0 auto;padding:24px max(18px,env(safe-area-inset-left,0px)) 80px;background:var(--bg);color:var(--ink);font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;hyphens:auto}
+  h1{font-size:1.9rem;line-height:1.2;text-wrap:balance;margin:.4em 0 .6em}
+  h2{font-size:1.4rem;margin-top:2.2em;padding-top:.6em;border-top:2px solid var(--line);text-wrap:balance}
+  h3{font-size:1.15rem;margin-top:1.8em;color:var(--accent)}
+  h4{font-size:1rem;margin-top:1.4em}
+  a{color:var(--accent)}
+  blockquote{margin:1em 0;padding:.6em 1em;background:var(--quote);border-left:4px solid var(--accent);border-radius:4px}
+  blockquote p{margin:.35em 0}
+  table{border-collapse:collapse;display:block;overflow-x:auto;margin:1em 0;font-size:.93rem;font-variant-numeric:tabular-nums}
+  th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+  th{background:var(--quote)}
+  code{font-size:.9em}
+  pre{overflow-x:auto;background:var(--quote);padding:12px;border-radius:6px;font-size:.85rem;line-height:1.35}
+  math{font-size:1.05em}
+  math[display=block]{overflow-x:auto;overflow-y:hidden;padding:.3em 0}
+  hr{border:0;border-top:1px solid var(--line);margin:2em 0}
+  nav#TOC{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 18px;margin:1em 0 2em;font-size:.95rem}
+  nav#TOC ul{padding-left:1.2em;margin:.3em 0}
+  nav#TOC > ul > li > ul{display:none}
+  .top{font-size:.9rem;margin-bottom:8px}
+  .top a{text-decoration:none}
+  @media print{body{max-width:none;font-size:11pt;padding:0}.top{display:none}h2{break-before:page;border-top:0}h2:first-of-type{break-before:auto}blockquote,table,pre{break-inside:avoid}nav#TOC{break-after:page}}
+  @page{size:A4;margin:16mm 14mm}
+  </style>
+</head>
+<body>
+<div class="top"><a href="index.html">← Tutti i temi</a></div>
+<header id="title-block-header">
+<h1 class="title">Tema 4 — La teoría de la distribución (mercados de
+factores, mercado de trabajo y desigualdad)</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#mappa-del-tema" id="toc-mappa-del-tema">Mappa del
+tema</a></li>
+<li><a
+href="#capitolo-1-mercati-dei-fattori-e-domanda-di-lavoro-slide-1-7"
+id="toc-capitolo-1-mercati-dei-fattori-e-domanda-di-lavoro-slide-1-7">Capitolo
+1 — Mercati dei fattori e domanda di lavoro (slide 1-7)</a></li>
+<li><a href="#capitolo-2-lofferta-di-lavoro-slide-8-11"
+id="toc-capitolo-2-lofferta-di-lavoro-slide-8-11">Capitolo 2 — L’offerta
+di lavoro (slide 8-11)</a></li>
+<li><a
+href="#capitolo-3-equilibrio-e-spostamenti-delle-curve-slide-12-13"
+id="toc-capitolo-3-equilibrio-e-spostamenti-delle-curve-slide-12-13">Capitolo
+3 — Equilibrio e spostamenti delle curve (slide 12-13)</a></li>
+<li><a
+href="#capitolo-4-dati-attività-disoccupazione-economia-sommersa-slide-14-18"
+id="toc-capitolo-4-dati-attività-disoccupazione-economia-sommersa-slide-14-18">Capitolo
+4 — Dati: attività, disoccupazione, economia sommersa (slide
+14-18)</a></li>
+<li><a
+href="#capitolo-5-particolarità-del-mercato-del-lavoro-spagnolo-slide-19-23"
+id="toc-capitolo-5-particolarità-del-mercato-del-lavoro-spagnolo-slide-19-23">Capitolo
+5 — Particolarità del mercato del lavoro spagnolo (slide 19-23)</a></li>
+<li><a
+href="#capitolo-6-differenze-salariali-e-discriminazione-slide-24-26"
+id="toc-capitolo-6-differenze-salariali-e-discriminazione-slide-24-26">Capitolo
+6 — Differenze salariali e discriminazione (slide 24-26)</a></li>
+<li><a
+href="#capitolo-7-la-misurazione-della-disuguaglianza-slide-27-31"
+id="toc-capitolo-7-la-misurazione-della-disuguaglianza-slide-27-31">Capitolo
+7 — La misurazione della disuguaglianza (slide 27-31)</a></li>
+<li><a
+href="#capitolo-8-filosofia-politica-della-redistribuzione-e-misure-anti-povertà-slide-32-36"
+id="toc-capitolo-8-filosofia-politica-della-redistribuzione-e-misure-anti-povertà-slide-32-36">Capitolo
+8 — Filosofia politica della redistribuzione e misure anti-povertà
+(slide 32-36)</a></li>
+<li><a href="#esercizi-epd-4-cosa-scrivere-sul-foglio-desame"
+id="toc-esercizi-epd-4-cosa-scrivere-sul-foglio-desame">Esercizi EPD 4 —
+cosa scrivere sul foglio d’esame</a>
+<ul>
+<li><a href="#esercizio-1-mercato-del-lavoro-spagnolo"
+id="toc-esercizio-1-mercato-del-lavoro-spagnolo">Esercizio 1 — Mercato
+del lavoro spagnolo</a></li>
+<li><a href="#esercizio-2-autolavaggio-stazione-di-servizio"
+id="toc-esercizio-2-autolavaggio-stazione-di-servizio">Esercizio 2 —
+Autolavaggio (stazione di servizio)</a></li>
+<li><a href="#esercizio-3-l_d30-5w-l_s3w4"
+id="toc-esercizio-3-l_d30-5w-l_s3w4">Esercizio 3 —
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>d</mi></msub><mo>=</mo><mn>30</mn><mo>−</mo><mn>5</mn><mi>w</mi></mrow><annotation encoding="application/x-tex">L_d=30-5w</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>s</mi></msub><mo>=</mo><mn>3</mn><mi>w</mi><mo>+</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">L_s=3w+4</annotation></semantics></math></a></li>
+<li><a href="#esercizio-4-industria-con-salario-minimo"
+id="toc-esercizio-4-industria-con-salario-minimo">Esercizio 4 —
+Industria con salario minimo</a></li>
+<li><a href="#esercizio-5-il-taxi-a-new-york-quando-piove"
+id="toc-esercizio-5-il-taxi-a-new-york-quando-piove">Esercizio 5 — Il
+taxi a New York quando piove</a></li>
+<li><a href="#riepilogo-ambiguità-e-interpretazioni-scrivile-sul-foglio"
+id="toc-riepilogo-ambiguità-e-interpretazioni-scrivile-sul-foglio">Riepilogo
+ambiguità e interpretazioni (scrivile sul foglio)</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="mappa-del-tema">Mappa del tema</h2>
+<p><strong>Filo logico.</strong> Il Tema 4 risponde a tre domande poste
+nella slide 2: (1) perché alcuni lavoratori guadagnano più di altri? (2)
+come vengono remunerati i fattori produttivi? (3) il libero mercato
+assegna in modo efficiente le risorse produttive? Si parte dal mercato
+del lavoro come caso tipico di <strong>mercato dei fattori</strong>
+(<em>mercado de factores</em>): prima la <strong>domanda</strong> (le
+imprese), poi l’<strong>offerta</strong> (le famiglie), poi
+l’<strong>equilibrio</strong> (il salario). Poi si guardano i dati reali
+(attività, disoccupazione, particolarità spagnole), si spiegano le
+<strong>differenze salariali</strong> (capitale umano,
+discriminazione…), si misura la <strong>disuguaglianza</strong> (Lorenz,
+Gini, povertà) e infine si discute <strong>cosa dovrebbe fare lo
+Stato</strong> (utilitarismo, egualitarismo, liberalismo) e con quali
+misure.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Blocco</th>
+<th>Slide</th>
+<th>Idea chiave</th>
+<th>Formula / strumento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Mercati dei fattori e domanda di lavoro</td>
+<td>1-7</td>
+<td>La domanda di lavoro è <strong>derivata</strong>; l’impresa assume
+finché VPML &gt; W</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>M</mi><mi>L</mi><mo>=</mo><mi mathvariant="normal">Δ</mi><mi>Q</mi><mi>/</mi><mi mathvariant="normal">Δ</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">PML=\Delta Q/\Delta L</annotation></semantics></math>;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mi>P</mi><mi>M</mi><mi>L</mi><mo>=</mo><mi>P</mi><mo>⋅</mo><mi>P</mi><mi>M</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">VPML=P\cdot PML</annotation></semantics></math></td>
+</tr>
+<tr>
+<td>2. Offerta di lavoro</td>
+<td>8-11</td>
+<td>Popolazione attiva + scelta lavoro/tempo libero; curva che “piega
+all’indietro”</td>
+<td>tasso di attività</td>
+</tr>
+<tr>
+<td>3. Equilibrio e spostamenti</td>
+<td>12-13</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
+equilibra offerta e domanda; shock spostano le curve</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>d</mi></msub><mo>=</mo><msub><mi>L</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">L_d=L_s</annotation></semantics></math></td>
+</tr>
+<tr>
+<td>4. Dati e disoccupazione</td>
+<td>14-18</td>
+<td>Tassi di attività, paro, tipi di disoccupazione, economia
+sommersa</td>
+<td>tabelle Eurostat</td>
+</tr>
+<tr>
+<td>5. Particolarità del mercato spagnolo</td>
+<td>19-23</td>
+<td>Regolato, rigido, temporalità alta, forti differenze regionali</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6. Differenze salariali e discriminazione</td>
+<td>24-26</td>
+<td>Differenziali compensativi, capitale umano, segnali, superstar,
+discriminazione</td>
+<td>—</td>
+</tr>
+<tr>
+<td>7. Misura della disuguaglianza</td>
+<td>27-31</td>
+<td>Distribuzione del reddito, povertà, Lorenz/Gini</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mi>i</mi><mi>n</mi><mi>i</mi><mo>=</mo><mi>A</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>+</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">Gini=A/(A+B)</annotation></semantics></math></td>
+</tr>
+<tr>
+<td>8. Filosofia della redistribuzione e misure</td>
+<td>32-36</td>
+<td>Utilitarismo / Rawls / Nozick; salario minimo e altre misure</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2
+id="capitolo-1-mercati-dei-fattori-e-domanda-di-lavoro-slide-1-7">Capitolo
+1 — Mercati dei fattori e domanda di lavoro (slide 1-7)</h2>
+<h3 id="cosè-la-teoria-della-distribuzione-slide-2">1.1 Cos’è la teoria
+della distribuzione (slide 2)</h3>
+<p><strong>Teoria della distribuzione</strong> (<em>teoría de la
+distribución</em>): studia il funzionamento dei <strong>mercati dei
+fattori</strong> (<em>mercados de factores</em>). I <strong>fattori di
+produzione</strong> (<em>factores de producción</em>) sono quelli usati
+per produrre beni e servizi: <strong>lavoro</strong> (<em>trabajo</em>),
+<strong>capitale</strong> (<em>capital</em>) e <strong>terra</strong>
+(<em>tierra</em>).</p>
+<h3 id="particolarità-dei-mercati-dei-fattori-slide-3">1.2 Particolarità
+dei mercati dei fattori (slide 3)</h3>
+<ul>
+<li>Sono le <strong>imprese a domandare</strong> i fattori e le
+<strong>famiglie a offrirli</strong> (al contrario del mercato dei
+beni).</li>
+<li>Funzionano come i mercati di beni e servizi, ma la <strong>domanda è
+derivata</strong> (<em>demanda derivada</em>): deriva dalla domanda dei
+beni che il fattore contribuisce a produrre.</li>
+<li>Determinano la <strong>retribuzione</strong> del fattore (il salario
+per il lavoro), non il prezzo necessario per acquistarne la
+proprietà.</li>
+</ul>
+<h3 id="la-domanda-di-lavoro-slide-4">1.3 La domanda di lavoro (slide
+4)</h3>
+<p>Il mercato del lavoro segue la legge di domanda e offerta: la
+<strong>quantità</strong> scambiata è il lavoro (L), il
+<strong>prezzo</strong> è il <strong>salario</strong> (<em>salario</em>,
+w). Poiché la domanda è derivata, per spiegare il salario si collega la
+<strong>produzione</strong> alla domanda di lavoro.</p>
+<h3 id="ipotesi-slide-5">1.4 Ipotesi (slide 5)</h3>
+<ol type="1">
+<li><strong>Entrambi i mercati sono competitivi</strong>: l’impresa è
+<em>price taker</em> (<em>precio aceptante</em>) sia nel vendere il
+prodotto sia nell’assumere (non può influenzare né P né w).</li>
+<li>L’impresa è <strong>massimizzatrice del profitto</strong>
+(<em>maximizadora de beneficios</em>): non le interessa la quantità
+venduta né il personale in sé, ma il profitto massimo.</li>
+</ol>
+<h3 id="funzione-di-produzione-e-prodotto-marginale-slide-6">1.5
+Funzione di produzione e prodotto marginale (slide 6)</h3>
+<p>La <strong>funzione di produzione</strong> (<em>función de
+producción</em>) è la relazione fra fattori usati e produzione ottenuta.
+Tabella della slide 6:</p>
+<table>
+<thead>
+<tr>
+<th>L</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q</td>
+<td>0</td>
+<td>100</td>
+<td>180</td>
+<td>240</td>
+<td>280</td>
+<td>300</td>
+</tr>
+<tr>
+<td>PML (variazione di Q)</td>
+<td>–</td>
+<td>100</td>
+<td>80</td>
+<td>60</td>
+<td>40</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Prodotto marginale del lavoro</strong> (<em>Producto Marginal
+del Trabajo</em>, PML): produzione in più generata da un lavoratore in
+più,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>M</mi><mi>L</mi><mo>=</mo><mi mathvariant="normal">Δ</mi><mi>Q</mi><mi>/</mi><mi mathvariant="normal">Δ</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">PML=\Delta Q/\Delta L</annotation></semantics></math>.
+Qui è <strong>decrescente</strong> (<em>producto marginal
+decreciente</em>): ogni lavoratore aggiuntivo aggiunge meno del
+precedente (100, 80, 60, 40, 20). I valori PML li abbiamo calcolati noi
+dalla tabella.</p>
+<p><strong>Valore del prodotto marginale del lavoro</strong> (<em>Valor
+del Producto Marginal del Trabajo</em>, VPML):
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mi>P</mi><mi>M</mi><mi>L</mi><mo>=</mo><mi>P</mi><mo>⋅</mo><mi>P</mi><mi>M</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">VPML = P \cdot PML</annotation></semantics></math>
+= ricavo extra che l’impresa ottiene da un lavoratore in più.</p>
+<p><strong>Beneficio per lavoratore</strong> (slide 6): ricavi dalla
+vendita del suo lavoro − salario, cioè
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mi>P</mi><mi>M</mi><mi>L</mi><mo>−</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">VPML - W</annotation></semantics></math>.</p>
+<p><strong>Regola di assunzione:</strong> si assumono lavoratori
+<strong>finché VPML &gt; W</strong>. Il numero ottimo è quello in cui
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mi>P</mi><mi>M</mi><mi>L</mi><mo>=</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">VPML = W</annotation></semantics></math>
+(o l’ultimo con VPML ≥ W).</p>
+<h3 id="il-grafico-della-domanda-di-lavoro-slide-7">1.6 Il grafico della
+domanda di lavoro (slide 7)</h3>
+<ul>
+<li><strong>Asse verticale:</strong> valore del prodotto marginale
+(VPML) / salario. <strong>Asse orizzontale:</strong> lavoratori.</li>
+<li>La curva <strong>VPML</strong> è decrescente (conseguenza del
+prodotto marginale decrescente).</li>
+<li>Si traccia una retta orizzontale al salario di mercato W (dato per
+l’impresa, perché price taker). L’intersezione indica la
+<strong>quantità di lavoratori che massimizza il profitto</strong>.</li>
+<li>A sinistra dell’intersezione: VPML &gt; W, <strong>conviene
+assumere</strong>. A destra: VPML &lt; W, <strong>non
+conviene</strong>.</li>
+<li><strong>La curva VPML è la curva di domanda di lavoro
+dell’impresa</strong>: a salario W maggiore, minore assunzione.</li>
+</ul>
+<h3 id="da-ricordare">Da ricordare</h3>
+<ul>
+<li>Domanda di lavoro = domanda derivata = curva VPML decrescente.</li>
+<li>Regola: assumere finché
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mi>P</mi><mi>M</mi><mi>L</mi><mo>≥</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">VPML \ge W</annotation></semantics></math>;
+ottimo con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mi>P</mi><mi>M</mi><mi>L</mi><mo>=</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">VPML = W</annotation></semantics></math>.</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mi>P</mi><mi>M</mi><mi>L</mi><mo>=</mo><mi>P</mi><mo>⋅</mo><mi>P</mi><mi>M</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">VPML = P\cdot PML</annotation></semantics></math>.
+Ipotesi: concorrenza su entrambi i mercati e massimizzazione del
+profitto.</li>
+</ul>
+<h3 id="trappole-desame">Trappole d’esame</h3>
+<ul>
+<li>Non confondere <strong>PML</strong> (unità fisiche, es. auto lavate)
+con <strong>VPML</strong> (in €, moltiplicato per il prezzo).</li>
+<li>Se il salario è orario e i lavoratori lavorano 6 ore, il costo per
+lavoratore al giorno è
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>⋅</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">W\cdot 6</annotation></semantics></math>
+(esercizio 2).</li>
+<li>Il salario non “dipende” dall’impresa: l’impresa lo prende come
+dato.</li>
+</ul>
+<hr />
+<h2 id="capitolo-2-lofferta-di-lavoro-slide-8-11">Capitolo 2 — L’offerta
+di lavoro (slide 8-11)</h2>
+<p>L’analisi si fa in <strong>due fasi</strong> (slide 8): (1) si vuole
+far parte della <strong>popolazione attiva</strong>? (2) quanto tempo si
+vuole dedicare al lavoro (lavoro vs tempo libero)?</p>
+<h3 id="popolazione-attiva-slide-9-10">2.1 Popolazione attiva (slide
+9-10)</h3>
+<p><strong>Popolazione attiva</strong> (<em>población activa</em>):
+insieme di persone che <strong>vogliono lavorare e possono
+farlo</strong>. Il diagramma dei flussi (slide 9) mostra i movimenti
+tra: lavoratori (occupati), disoccupati (<em>desempleados</em>),
+popolazione non attiva (<em>población no activa</em>). Frecce:
+licenziamenti (<em>despidos</em>) e rientri (<em>reingresos</em>) tra
+occupati e disoccupati; pensionati/invalidi (<em>jubilados,
+invalidez</em>) escono verso la non attiva; <strong>lavoratori
+scoraggiati</strong> (<em>trabajadores desalentados</em>) passano da
+disoccupati a non attivi; <strong>primo impiego</strong> (<em>primer
+empleo</em>) e nuova popolazione attiva entrano nel mercato.</p>
+<p>Effetto principale del salario sull’offerta: l’<strong>incentivo a
+entrare</strong> nella popolazione attiva (<strong>salario di
+riserva</strong>, <em>salario de reserva</em>: salario minimo per cui
+conviene lavorare).</p>
+<p><strong>Tasso di attività</strong> (<em>tasa de actividad</em>):
+percentuale di popolazione attiva sulla popolazione totale in età
+lavorativa (nelle tabelle: 15-64 anni).</p>
+<p><strong>Spostamenti dell’offerta</strong> (più partecipazione):
+aumento della popolazione attiva; cambio di preferenze dei lavoratori
+(ore extra…); condizioni di lavoro in altri segmenti; variazioni del
+capitale umano.</p>
+<h3 id="lavoro-vs-tempo-libero-slide-11">2.2 Lavoro vs tempo libero
+(slide 11)</h3>
+<p><strong>Quanto lavorare?</strong> Dipende dal <strong>salario
+reale</strong> (w/p). Più alto il salario, più è attraente lavorare e
+maggiore l’offerta. Ma <strong>da un certo livello</strong> il reddito
+può bastare: si desidera più <strong>tempo libero</strong>
+(<em>ocio</em>) e si lavora meno.</p>
+<p><strong>Grafico (slide 11):</strong> asse verticale
+<strong>w/p</strong> (salario reale), asse orizzontale
+<strong>ore</strong> (<em>horas</em>). La curva sale (più salario → più
+ore) poi, oltre una linea tratteggiata, <strong>piega
+all’indietro</strong>: curva di offerta di lavoro “backward-bending”.
+Motivo (approfondimento, concetti standard, non nelle slide con questi
+nomi): l’<strong>effetto sostituzione</strong> (il tempo libero costa di
+più → lavoro di più) domina a salari bassi; l’<strong>effetto
+reddito</strong> (sono più ricco → compro più tempo libero) domina a
+salari alti.</p>
+<h3 id="da-ricordare-1">Da ricordare</h3>
+<ul>
+<li>Offerta: prima partecipazione (tasso di attività, salario di
+riserva), poi ore (lavoro vs ocio).</li>
+<li>Curva di offerta individuale può piegare all’indietro: “cuanto más
+me paguen, menor trabajo” (oltre un certo livello).</li>
+<li>Offerta di mercato di norma crescente in w.</li>
+</ul>
+<h3 id="trappole-desame-1">Trappole d’esame</h3>
+<ul>
+<li>Offerta spostata (cambio popolazione, emigrazione) ≠ movimento lungo
+la curva (causato da w).</li>
+<li>Tasso di attività ≠ tasso di occupazione (nelle tabelle:
+attivi/popolazione vs occupati/popolazione).</li>
+</ul>
+<hr />
+<h2
+id="capitolo-3-equilibrio-e-spostamenti-delle-curve-slide-12-13">Capitolo
+3 — Equilibrio e spostamenti delle curve (slide 12-13)</h2>
+<ul>
+<li>Il <strong>salario è il prezzo che equilibra offerta e domanda di
+lavoro</strong> (<em>oferta y demanda</em>), ed è uguale al
+<strong>valore del prodotto marginale del lavoro</strong> (slide 12).
+Qualunque evento che sposti offerta o domanda cambia il salario.</li>
+<li><strong>Equilibrio</strong>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>d</mi></msub><mo>=</mo><msub><mi>L</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">L_d = L_s</annotation></semantics></math>
+→ si ricava
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>w</mi><mo>*</mo></msup><annotation encoding="application/x-tex">w^*</annotation></semantics></math>
+e poi
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mo>*</mo></msup><annotation encoding="application/x-tex">L^*</annotation></semantics></math>.</li>
+</ul>
+<p><strong>Grafico slide 13 (aumenta la domanda).</strong> Se il
+prodotto diventa più popolare e il suo <strong>prezzo sale</strong>, il
+VPML di ogni lavoratore sale: la <strong>curva di domanda si sposta a
+destra</strong> (verso l’alto). Risultato: salario più alto
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mn>1</mn></msub><mo>→</mo><msub><mi>W</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">W_1\to W_2</annotation></semantics></math>)
+e più occupati
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mn>1</mn></msub><mo>→</mo><msub><mi>L</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">L_1\to L_2</annotation></semantics></math>).</p>
+<p>Altri fattori (slide 13): - <strong>Sindacati</strong>
+(<em>sindicatos</em>): <strong>restrizione dell’offerta</strong> → curva
+di offerta a sinistra → salario ↑, occupazione ↓. - <strong>Imposte e
+contributi sociali</strong> (<em>impuestos y cotizaciones
+sociales</em>): <strong>diminuzione della domanda</strong> → curva a
+sinistra. - <strong>Salari di riserva e assicurazione di
+disoccupazione</strong> (<em>seguro de desempleo</em>): influenzano
+l’offerta (chi ha sussidio accetta lavori solo a salari più alti).</p>
+<p><strong>Tabella riassuntiva degli spostamenti</strong></p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Evento</th>
+<th>Curva che si sposta</th>
+<th>Effetto su w</th>
+<th>Effetto su L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>↑ prezzo del prodotto / ↑ produttività</td>
+<td>Domanda → destra</td>
+<td>↑</td>
+<td>↑</td>
+</tr>
+<tr>
+<td>↓ domanda del prodotto / ↑ imposte-cotizzazioni sul lavoro</td>
+<td>Domanda ← sinistra</td>
+<td>↓</td>
+<td>↓</td>
+</tr>
+<tr>
+<td>↑ popolazione attiva, immigrazione</td>
+<td>Offerta → destra</td>
+<td>↓</td>
+<td>↑</td>
+</tr>
+<tr>
+<td>Emigrazione, sindacati restrittivi</td>
+<td>Offerta ← sinistra</td>
+<td>↑</td>
+<td>↓</td>
+</tr>
+</tbody>
+</table>
+<h3 id="da-ricordare-2">Da ricordare</h3>
+<p>Disegna sempre: assi (w verticale, L orizzontale), le due curve, lo
+spostamento con freccia, i nuovi punti
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><msub><mi>w</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">w_1,w_2</annotation></semantics></math>
+e
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mn>1</mn></msub><mo>,</mo><msub><mi>L</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">L_1,L_2</annotation></semantics></math>.</p>
+<h3 id="trappole-desame-2">Trappole d’esame</h3>
+<ul>
+<li>Nella slide 13 l’asse verticale è chiamato “valore del prodotto
+marginale” ma si legge come salario: scrivi sull’asse “w
+(salario)”.</li>
+<li>Se una curva si sposta a destra, <strong>sempre</strong> dire cosa
+succede a entrambe le variabili (w e L).</li>
+</ul>
+<hr />
+<h2
+id="capitolo-4-dati-attività-disoccupazione-economia-sommersa-slide-14-18">Capitolo
+4 — Dati: attività, disoccupazione, economia sommersa (slide 14-18)</h2>
+<h3 id="tasso-di-attività-e-occupazione-slide-14-eurostat-2021-q2">4.1
+Tasso di attività e occupazione (slide 14, Eurostat 2021-Q2)</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Esp</th>
+<th>EA-19</th>
+<th>Ale</th>
+<th>Fra</th>
+<th>Ita</th>
+<th>Sv</th>
+<th>Ol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Totale</td>
+<td>73</td>
+<td>73</td>
+<td>78</td>
+<td>72</td>
+<td>64</td>
+<td>84</td>
+<td>84</td>
+</tr>
+<tr>
+<td>Uomini</td>
+<td>77</td>
+<td>78</td>
+<td>82</td>
+<td>76</td>
+<td>73</td>
+<td>86</td>
+<td>87</td>
+</tr>
+<tr>
+<td>Donne</td>
+<td>69</td>
+<td>68</td>
+<td>74</td>
+<td>69</td>
+<td>55</td>
+<td>82</td>
+<td>80</td>
+</tr>
+<tr>
+<td>Tasso di occupazione</td>
+<td>62</td>
+<td>67</td>
+<td>75</td>
+<td>67</td>
+<td>58</td>
+<td>75</td>
+<td>80</td>
+</tr>
+</tbody>
+</table>
+<p>Lettura: la Spagna ha un tasso di attività uguale alla media
+dell’eurozona (73) ma un tasso di <strong>occupazione</strong> più basso
+(62 vs 67): differenza dovuta alla disoccupazione. L’Italia ha il tasso
+di attività più basso (64), soprattutto per le donne (55).</p>
+<h3 id="disoccupazione-paro-per-sesso-ed-età-slide-15">4.2
+Disoccupazione (<em>paro</em>) per sesso ed età (slide 15)</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Esp</th>
+<th>EA-19</th>
+<th>Ale</th>
+<th>Fra</th>
+<th>Ita</th>
+<th>Sv</th>
+<th>Ol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Totale</td>
+<td>15</td>
+<td>8</td>
+<td>3,6</td>
+<td>7,6</td>
+<td>9,6</td>
+<td>9,9</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Uomini</td>
+<td>14</td>
+<td>7,2</td>
+<td>3,4</td>
+<td>7,1</td>
+<td>7,2</td>
+<td>9,1</td>
+<td>3,8</td>
+</tr>
+<tr>
+<td>Donne</td>
+<td>16</td>
+<td>7,4</td>
+<td>2,6</td>
+<td>6,4</td>
+<td>8,4</td>
+<td>9,1</td>
+<td>3,8</td>
+</tr>
+<tr>
+<td>Giovani (&lt;25)</td>
+<td>38</td>
+<td>17</td>
+<td>7</td>
+<td>18</td>
+<td>29</td>
+<td>30</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<p>Messaggio: Spagna con il paro più alto, e <strong>disoccupazione
+giovanile enorme</strong> (38%). (I dati della slide sono quelli
+indicati: ci sono piccole incoerenze interne, es. totale Ale 3,6 con
+donne 2,6; non memorizzare i decimali.)</p>
+<h3 id="tipi-di-disoccupazione-clases-de-paro-slide-16">4.3 Tipi di
+disoccupazione (<em>clases de paro</em>, slide 16)</h3>
+<p>La slide elenca solo i nomi. Definizioni standard (approfondimento,
+<strong>non spiegate nelle slide</strong>): - <strong>Ciclico</strong>
+(<em>cíclico</em>): dovuto alla fase bassa del ciclo economico (poca
+domanda aggregata). - <strong>Classico</strong> (<em>clásico</em>):
+salari superiori all’equilibrio (es. salario minimo troppo alto),
+eccesso di offerta. - <strong>Frizionale</strong> (<em>friccional</em>):
+tempo necessario per cercare/trovare lavoro tra un impiego e l’altro. -
+<strong>Volontario</strong> (<em>voluntario</em>): chi non accetta i
+salari offerti (salario di riserva più alto). - <strong>Falso</strong>
+(<em>falso</em>, economia sommersa): disoccupati che in realtà lavorano
+in nero. - <strong>Strutturale</strong> (<em>estructural</em>): mismatch
+tra competenze richieste e possedute, o tra regioni/settori.</p>
+<h3 id="economia-sommersa-economía-sumergida-slide-17-18">4.4 Economia
+sommersa (<em>economía sumergida</em>, slide 17-18)</h3>
+<p>Le slide 17-18 contengono solo grafici/immagini (nessun testo).
+Concetto: attività produttiva non dichiarata; collegata al “paro falso”:
+falsa i dati ufficiali di disoccupazione.</p>
+<h3 id="da-ricordare-3">Da ricordare</h3>
+<ul>
+<li>Spagna: attività nella media, occupazione bassa, paro 15%, giovani
+38%.</li>
+<li>Sei tipi di paro: ciclico, classico, frizionale, volontario, falso,
+strutturale.</li>
+</ul>
+<h3 id="trappole-desame-3">Trappole d’esame</h3>
+<ul>
+<li>Non scambiare <strong>paro</strong> (disoccupazione) con
+<strong>temporalidad</strong> (precarietà).</li>
+<li>“Paro falso” = economia sommersa.</li>
+</ul>
+<hr />
+<h2
+id="capitolo-5-particolarità-del-mercato-del-lavoro-spagnolo-slide-19-23">Capitolo
+5 — Particolarità del mercato del lavoro spagnolo (slide 19-23)</h2>
+<h3
+id="il-mercato-del-lavoro-richiede-un-trattamento-differenziale-slide-19">5.1
+Il mercato del lavoro richiede un trattamento differenziale (slide
+19)</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Particolarità</th>
+<th>Conseguenza (colonna destra della slide)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. È un mercato <strong>regolato</strong></td>
+<td><strong>SMI</strong> (<em>salario mínimo interprofesional</em>)</td>
+</tr>
+<tr>
+<td>2. Gli aggiustamenti delle ore sono <strong>lenti</strong></td>
+<td>Contratti lunghi</td>
+</tr>
+<tr>
+<td>3. I licenziamenti sono <strong>costosi</strong></td>
+<td>Scarsa rotazione</td>
+</tr>
+<tr>
+<td>4. I salari sono <strong>inflessibili al ribasso</strong></td>
+<td><strong>Salari di efficienza</strong> (<em>salarios de
+eficiencia</em>)</td>
+</tr>
+<tr>
+<td>5. <strong>Contrattazione collettiva</strong></td>
+<td>Inflessibile</td>
+</tr>
+<tr>
+<td>6. <strong>Non c’è illusione monetaria</strong></td>
+<td>Clausole di revisione salariale</td>
+</tr>
+</tbody>
+</table>
+<h3 id="anche-loccupazione-spagnola-è-particolare-slide-20">5.2 Anche
+l’occupazione spagnola è particolare (slide 20)</h3>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr>
+<th></th>
+<th>Esp</th>
+<th>EA-19</th>
+<th>Ale</th>
+<th>Fra</th>
+<th>Ita</th>
+<th>Sv</th>
+<th>Ol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tasso di <strong>temporalità</strong></td>
+<td>25</td>
+<td>15</td>
+<td>11</td>
+<td>14</td>
+<td>14</td>
+<td>15</td>
+<td>27</td>
+</tr>
+<tr>
+<td>% occupazione a tempo <strong>parziale</strong></td>
+<td>14</td>
+<td>21</td>
+<td>28</td>
+<td>17</td>
+<td>18,2</td>
+<td>20</td>
+<td>42</td>
+</tr>
+<tr>
+<td>Settimana lavorativa (ore)</td>
+<td>37,7</td>
+<td>36,5</td>
+<td>35,1</td>
+<td>37,2</td>
+<td>37,1</td>
+<td>36,7</td>
+<td>30,2</td>
+</tr>
+</tbody>
+</table>
+<p>Spagna: temporalità molto alta (25% vs 15%), poco part-time, ore
+settimanali più alte.</p>
+<h3 id="causa-della-temporalità-il-costo-del-licenziamento-slide-21">5.3
+Causa della temporalità: il costo del licenziamento? (slide 21)</h3>
+<p>Grafico a barre: indennità di licenziamento (in mensilità circa) per
+un dipendente con 9 mesi, 4 anni, 20 anni di anzianità; confronto Spagna
+2008, Spagna 2013, OCSE 2013. La Spagna ha indennità molto superiori
+alla media OCSE per l’anzianità lunga (circa 33 nel 2008, 22 nel 2013 vs
+circa 13 OCSE), quindi le imprese preferiscono contratti temporanei.</p>
+<h3
+id="miti-sulla-mobilità-spagnola-slide-22-e-disoccupazione-regionale-slide-23">5.4
+Miti sulla mobilità spagnola (slide 22) e disoccupazione regionale
+(slide 23)</h3>
+<ul>
+<li>Slide 22: grafico della <strong>mobilità geografica</strong>
+nell’UE-25 (lavoratori con esperienza in altre regioni o paesi, dati
+2005): la Spagna è nella parte bassa, cioè poco mobile (il “mito”
+riguarda la mobilità degli spagnoli).</li>
+<li>Slide 23: <strong>tasso di paro regionale</strong> (EPA, III
+trimestre 2023; Spagna = 11,84%): grandi differenze, con Andalusia,
+Ceuta, Melilla, Extremadura tra le più alte e Paesi Baschi, Navarra,
+Baleari tra le più basse (dalla mappa/tabella).</li>
+</ul>
+<h3 id="da-ricordare-4">Da ricordare</h3>
+<ul>
+<li>Le 6 particolarità e le loro conseguenze (tabella 5.1).</li>
+<li>Spagna: temporalità 25% (vs 15% EA-19), forti squilibri regionali,
+bassa mobilità.</li>
+</ul>
+<h3 id="trappole-desame-4">Trappole d’esame</h3>
+<ul>
+<li>“Salari inflessibili al ribasso” → <strong>salari di
+efficienza</strong> (non “salario minimo”).</li>
+<li>“Regolato” → SMI.</li>
+</ul>
+<hr />
+<h2
+id="capitolo-6-differenze-salariali-e-discriminazione-slide-24-26">Capitolo
+6 — Differenze salariali e discriminazione (slide 24-26)</h2>
+<p>Domanda: come influenzano le caratteristiche dei lavoratori domanda,
+offerta e salari?</p>
+<ol type="1">
+<li><strong>Differenze compensative</strong> (<em>diferencias
+compensatorias</em>): lavori duri/pericolosi/difficili hanno
+<strong>salari maggiori</strong> dei lavori facili e piacevoli (es.
+indennità di pericolosità), perché l’offerta per quei lavori è
+minore.</li>
+<li><strong>Capitale umano</strong> (<em>capital humano</em>):
+<strong>stock di investimenti nelle persone</strong> (conoscenze e
+capacità accumulate). Aumenta la produttività → sale il prodotto
+marginale → sale il salario.</li>
+<li><strong>Capacità, sforzo e fortuna</strong> (<em>capacidad, esfuerzo
+y suerte</em>): la capacità naturale determina il PML; chi si sforza di
+più guadagna di più (es. commissioni sulle vendite, produttività
+misurata per lavoratore negli USA); conta anche la fortuna.</li>
+<li><strong>Teoria dei segnali</strong> (<em>señales</em>)
+dell’istruzione: l’università non rende più produttivi per il solo
+titolo; i più produttivi sono quelli che riescono a ottenerlo e così
+<strong>segnalano</strong> la propria capacità. La slide la definisce
+“simplista”.</li>
+<li><strong>Fenomeno delle superstar</strong> (<em>superestrellas</em>):
+perché il miglior idraulico del mondo non guadagna come il miglior
+comico? Perché il secondo raggiunge un numero enorme di persone offrendo
+lo stesso servizio.</li>
+</ol>
+<h3 id="discriminazione-praticata-slide-26">Discriminazione praticata
+(slide 26)</h3>
+<p>Se, isolati capitale umano e differenziali compensativi, la
+discriminazione persiste (sesso, razza, religione…), da dove nasce? -
+<strong>Dai datori di lavoro</strong>: porterebbe a una maggiore domanda
+di lavoratori con salari più bassi e a maggiori profitti (quindi in
+concorrenza non dovrebbe durare). - <strong>Dai clienti e dal
+governo</strong>: se i clienti discriminano le imprese per i loro
+lavoratori, le differenze salariali possono persistere; allora la
+discriminazione dell’imprenditore sarebbe <strong>compatibile con un
+mercato competitivo</strong>. I governi possono anche imporre la
+discriminazione per legge.</p>
+<h3 id="da-ricordare-5">Da ricordare</h3>
+<p>5 spiegazioni delle differenze salariali + la discriminazione
+(imprenditori, clienti, governo).</p>
+<h3 id="trappole-desame-5">Trappole d’esame</h3>
+<ul>
+<li>Capitale umano = stock di investimenti nelle persone;
+<strong>segnali</strong>: l’istruzione non aumenta la produttività, la
+rivela.</li>
+<li>Differenze compensative: lavori peggiori pagano <strong>di
+più</strong>.</li>
+</ul>
+<hr />
+<h2
+id="capitolo-7-la-misurazione-della-disuguaglianza-slide-27-31">Capitolo
+7 — La misurazione della disuguaglianza (slide 27-31)</h2>
+<h3 id="due-indicatori-slide-27">7.1 Due indicatori (slide 27)</h3>
+<ol type="1">
+<li><strong>Distribuzione del reddito</strong> (<em>distribución de
+renta</em>): percentuale di reddito posseduta da ciascuno strato.
+Esempio: il 5% più ricco detiene il 35% del reddito, il 40% più povero
+un altro 35%. <strong>Uguaglianza totale</strong>: ogni 1% di
+popolazione possiede l’1% del reddito.</li>
+<li><strong>Tasso di povertà</strong> (<em>tasa de pobreza</em>):
+percentuale della popolazione il cui reddito non supera una soglia, la
+<strong>soglia di povertà</strong> (<em>umbral de pobreza</em>).</li>
+</ol>
+<h3 id="grafico-di-lorenz-e-gini-slide-28">7.2 Grafico di Lorenz e Gini
+(slide 28)</h3>
+<ul>
+<li><strong>Asse orizzontale:</strong> popolazione cumulata (0%-100%,
+dai più poveri). <strong>Asse verticale:</strong> reddito cumulato
+(0%-100%).</li>
+<li><strong>Linea di perfetta uguaglianza</strong> (<em>línea de
+perfecta igualdad</em>): diagonale a 45°.</li>
+<li><strong>Curva di Lorenz</strong> (<em>curva de Lorenz</em>): sta
+sotto la diagonale; più si allontana, più disuguaglianza. <strong>Linea
+di totale disuguaglianza</strong>: lungo asse orizzontale e poi verso
+l’alto (uno solo ha tutto).</li>
+<li><strong>A</strong> = area fra diagonale e Lorenz; <strong>B</strong>
+= area sotto la curva di Lorenz.</li>
+<li><strong>Indice di Gini</strong> (<em>coeficiente de Gini</em>):
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mi>i</mi><mi>n</mi><mi>i</mi><mo>=</mo><mfrac><mi>A</mi><mrow><mi>A</mi><mo>+</mo><mi>B</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">Gini=\frac{A}{A+B}</annotation></semantics></math>
+Va da 0 (uguaglianza perfetta) a 1 (o 0-100 se in percentuale: 100 =
+disuguaglianza assoluta).</li>
+</ul>
+<h3 id="crisi-e-disuguaglianza-slide-29-e-gini-nella-ue-slide-30">7.3
+Crisi e disuguaglianza (slide 29) e Gini nella UE (slide 30)</h3>
+<ul>
+<li>Slide 29: <strong>Gini in Spagna</strong> cresce dal 2007-08 con la
+crisi (da circa 31,3 nel 2008 a circa 34 nel 2011), più dell’UE-27/UE-15
+(30,5 nel 2010). Il grafico a destra: <strong>variazione
+2012/2007</strong> del Gini (disponibile = dopo imposte e trasferimenti;
+mercato = prima): la Spagna è il paese in cui la disuguaglianza
+<strong>aumenta di più</strong> (valori letti dal grafico,
+approssimati).</li>
+<li>Slide 30: Gini nei paesi UE 2008 vs 2013 e mappa 2013. Solo
+grafici.</li>
+</ul>
+<h3 id="limiti-nella-misura-della-povertà-slide-31">7.4 Limiti nella
+misura della povertà (slide 31)</h3>
+<p>Misurare la povertà è complicato: non basta il reddito monetario.
+Bisogna considerare <strong>trasferimenti in natura</strong> (alimenti,
+servizi sociali, sanitari), il <strong>ciclo vitale</strong>,
+<strong>reddito permanente vs transitorio</strong>, e la
+<strong>mobilità economica</strong> (famiglie che passano da livelli
+bassi ad alti e viceversa).</p>
+<h3 id="da-ricordare-6">Da ricordare</h3>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mi>i</mi><mi>n</mi><mi>i</mi><mo>=</mo><mi>A</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo>+</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">Gini=A/(A+B)</annotation></semantics></math>;
+0 = uguaglianza; Lorenz sotto la diagonale; povertà = % sotto la
+soglia.</p>
+<h3 id="trappole-desame-6">Trappole d’esame</h3>
+<ul>
+<li>Più <strong>vicina alla diagonale</strong> la Lorenz →
+<strong>meno</strong> disuguaglianza → Gini più basso.</li>
+<li>Se A = 0 → Gini = 0. Se B = 0 → Gini = 1.</li>
+</ul>
+<hr />
+<h2
+id="capitolo-8-filosofia-politica-della-redistribuzione-e-misure-anti-povertà-slide-32-36">Capitolo
+8 — Filosofia politica della redistribuzione e misure anti-povertà
+(slide 32-36)</h2>
+<p>La scienza economica non può decidere da sola cosa fare contro la
+disuguaglianza: servono <strong>giudizi di valore</strong> e quindi
+politica economica (slide 32).</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Scuola</th>
+<th>Autore</th>
+<th>Idea</th>
+<th>Strumento / limite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Utilitarismo</strong> (<em>utilitarismo</em>)</td>
+<td>Bentham, J. S. Mill</td>
+<td>Lo Stato deve <strong>massimizzare il benessere totale</strong>
+(utilità aggregata).</td>
+<td>Trasferire reddito dai ricchi ai poveri: 1 € tolto a un ricco riduce
+poco la sua utilità, dato a un povero la aumenta molto. Mezzo:
+<strong>imposte</strong>. Limite: gli incentivi (se le imposte riducono
+il lavoro e il reddito totale più dell’aumento da redistribuzione).</td>
+</tr>
+<tr>
+<td><strong>Egualitarismo</strong> (<em>igualitarismo</em>)</td>
+<td>J. Rawls</td>
+<td><strong>Velo di ignoranza</strong> (<em>velo de ignorancia</em>): si
+sceglie la politica giusta prima di sapere come si nascerà.</td>
+<td>Si massimizza l’utilità dei <strong>gruppi a reddito minimo</strong>
+(criterio maximin), non quella totale.</td>
+</tr>
+<tr>
+<td><strong>Liberalismo</strong> (<em>liberalismo</em>)</td>
+<td>R. Nozick, <em>Anarquía, Estado y Utopía</em></td>
+<td>La società non ha un’utilità totale: ce l’hanno i <strong>singoli
+membri</strong>. La distribuzione è giusta se lo sono le condizioni che
+la determinano.</td>
+<td>Conta l’<strong>uguaglianza di opportunità</strong>, non quella dei
+redditi.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="misure-per-ridurre-la-povertà-slide-36">Misure per ridurre la
+povertà (slide 36)</h3>
+<ul>
+<li><strong>Salario minimo</strong> (<em>salario mínimo</em>). Problema:
+se fissato <strong>sopra</strong> l’equilibrio è un prezzo minimo
+vincolante → <strong>eccesso di offerta</strong> =
+<strong>disoccupazione</strong>.</li>
+<li><strong>Assistenza sociale</strong> (<em>asistencia
+social</em>).</li>
+<li><strong>Imposta negativa sul reddito</strong> (<em>impuesto negativo
+de la renta</em>).</li>
+<li><strong>Trasferimenti in natura</strong> (<em>transferencias en
+especie</em>).</li>
+<li><strong>Programmi di lotta alla povertà e incentivi</strong>:
+rischio che l’aiuto dello Stato si ritorca contro i suoi obiettivi, con
+<strong>disincentivo al lavoro</strong>.</li>
+</ul>
+<h3 id="da-ricordare-7">Da ricordare</h3>
+<p>Utilitarismo = benessere totale; Rawls = massimizzare i più poveri
+(velo); Nozick = opportunità. Salario minimo alto → disoccupazione.</p>
+<h3 id="trappole-desame-7">Trappole d’esame</h3>
+<ul>
+<li>Rawls NON massimizza l’utilità totale: massimizza quella del gruppo
+minimo.</li>
+<li>Il salario minimo ha effetto solo se <strong>supera</strong>
+l’equilibrio (esercizio 4c).</li>
+</ul>
+<hr />
+<h1 id="esercizi-epd-4-cosa-scrivere-sul-foglio-desame">Esercizi EPD 4 —
+cosa scrivere sul foglio d’esame</h1>
+<p><strong>Strumenti comuni.</strong> - Equilibrio: poni
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>d</mi></msub><mo>=</mo><msub><mi>L</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">L_d=L_s</annotation></semantics></math>,
+ricava
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>w</mi><mo>*</mo></msup><annotation encoding="application/x-tex">w^*</annotation></semantics></math>,
+poi sostituisci in una delle due funzioni per trovare
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mo>*</mo></msup><annotation encoding="application/x-tex">L^*</annotation></semantics></math>
+(verifica che entrambe diano lo stesso). - Grafico di una funzione: assi
+<strong>w (verticale)</strong>, <strong>L (orizzontale)</strong> (come
+nelle slide). Poiché
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+è funzione di
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>,
+per disegnare servono due punti: intercetta con asse w (ponendo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">L=0</annotation></semantics></math>)
+e intercetta con asse L (ponendo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">w=0</annotation></semantics></math>).
+Etichetta le curve D (domanda, decrescente) e S (oferta, crescente).</p>
+<h2 id="esercizio-1-mercato-del-lavoro-spagnolo">Esercizio 1 — Mercato
+del lavoro spagnolo</h2>
+<p><strong>Dati:</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>d</mi></msub><mo>=</mo><mn>1000</mn><mo>−</mo><mn>100</mn><mi>w</mi></mrow><annotation encoding="application/x-tex">L_d = 1000 - 100w</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>s</mi></msub><mo>=</mo><mn>300</mn><mi>w</mi></mrow><annotation encoding="application/x-tex">L_s = 300w</annotation></semantics></math>.</p>
+<h3 id="a-grafico-ed-equilibrio">a) Grafico ed equilibrio</h3>
+<p><strong>Cosa chiede:</strong> disegnare le due curve e trovare
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>w</mi><mo>*</mo></msup><annotation encoding="application/x-tex">w^*</annotation></semantics></math>
+e
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mo>*</mo></msup><annotation encoding="application/x-tex">L^*</annotation></semantics></math>.</p>
+<p><strong>Calcolo:</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1000</mn><mo>−</mo><mn>100</mn><mi>w</mi><mo>=</mo><mn>300</mn><mi>w</mi><mo>⇒</mo><mn>1000</mn><mo>=</mo><mn>400</mn><mi>w</mi><mo>⇒</mo><msup><mi>w</mi><mo>*</mo></msup><mo>=</mo><mn>2</mn><mo>,</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">1000-100w=300w \Rightarrow 1000=400w \Rightarrow w^*=2{,}5</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mo>*</mo></msup><mo>=</mo><mn>300</mn><mo>⋅</mo><mn>2</mn><mo>,</mo><mn>5</mn><mo>=</mo><mn>750</mn><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mtext mathvariant="normal">verifica: </mtext><mspace width="0.333em"></mspace></mrow><mn>1000</mn><mo>−</mo><mn>100</mn><mo>⋅</mo><mn>2</mn><mo>,</mo><mn>5</mn><mo>=</mo><mn>750</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">L^*=300\cdot 2{,}5=750 \quad (\text{verifica: }1000-100\cdot 2{,}5=750)</annotation></semantics></math></p>
+<p><strong>Come disegnare (punto per punto):</strong> 1. Asse verticale
+w, orizzontale L. 2. <strong>Domanda:</strong> se
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">L=0</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">w=10</annotation></semantics></math>
+(punto (0,10)); se
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">w=0</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">L=1000</annotation></semantics></math>
+(punto (1000,0)). Unisci: retta decrescente. 3.
+<strong>Offerta:</strong> passa per l’origine (0,0), con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>2</mn><mo>,</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">w=2{,}5</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>750</mn></mrow><annotation encoding="application/x-tex">L=750</annotation></semantics></math>.
+Un altro punto:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">w=5</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>1500</mn></mrow><annotation encoding="application/x-tex">L=1500</annotation></semantics></math>
+(fuori scala, basta il punto (750; 2,5) e l’origine). Retta crescente.
+4. Segna l’incrocio E (750; 2,5), con tratteggi verso gli assi.</p>
+<p><strong>Modello di risposta:</strong> &gt; Equilibrio: Ld = Ls → 1000
+− 100w = 300w → w* = 2,5 u.m.; L* = 300·2,5 = 750 trabajadores. En el
+gráfico, la demanda es decreciente (corte con el eje w en 10) y la
+oferta es creciente (sale del origen); se cortan en E (L=750,
+w=2,5).</p>
+<h3 id="b-aumento-del-prezzo-del-petrolio-opep">b) Aumento del prezzo
+del petrolio (OPEP)</h3>
+<p><strong>Interpretazione adottata (dichiaratela all’esame):</strong>
+il testo non specifica il canale. Si interpreta che il petrolio più caro
+<strong>aumenta i costi di produzione</strong> delle imprese (il
+petrolio è un input), riducendo la redditività e la produzione, quindi
+<strong>riduce la domanda di lavoro</strong> (la curva VPML si sposta a
+sinistra). Effetto sull’offerta: nessuno diretto. (Si potrebbe anche
+argomentare l’effetto sul prezzo dei beni, ma l’effetto netto sul lavoro
+resta una domanda ridotta se la produzione cala.)</p>
+<p><strong>Conseguenza:</strong> curva D si sposta a
+<strong>sinistra</strong> → <strong>salario di equilibrio ↓ e
+occupazione ↓</strong> (più disoccupazione). Non servono numeri.</p>
+<p><strong>Grafico:</strong> disegna D, S, D’ a sinistra di D; nuovo
+equilibrio E’ con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>w</mi><mo>′</mo></msup><mo>&lt;</mo><msup><mi>w</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">w&#39;&lt;w^*</annotation></semantics></math>
+e
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mo>′</mo></msup><mo>&lt;</mo><msup><mi>L</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">L&#39;&lt;L^*</annotation></semantics></math>.</p>
+<p><strong>Modello di risposta:</strong> &gt; La subida del precio del
+petróleo encarece los costes y reduce la rentabilidad de las empresas:
+baja la demanda de trabajo (la curva se desplaza a la izquierda).
+Resultado: disminuyen el salario de equilibrio y el empleo.
+(Interpretación: el petróleo se considera un input; si se interpretara
+como aumento del precio del producto, la demanda se desplazaría a la
+derecha.)</p>
+<h3 id="c-emigrazione-di-manodopera">c) Emigrazione di manodopera</h3>
+<p><strong>Calcolo concettuale:</strong> meno lavoratori disponibili →
+l’<strong>offerta di lavoro si sposta a sinistra</strong> (diminuisce).
+A parità di domanda:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
+↑ e
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+↓.</p>
+<p><strong>Modello di risposta:</strong> &gt; La emigración reduce la
+población activa: la curva de oferta de trabajo se desplaza a la
+izquierda. Con la misma demanda, sube el salario de equilibrio y baja el
+empleo.</p>
+<hr />
+<h2 id="esercizio-2-autolavaggio-stazione-di-servizio">Esercizio 2 —
+Autolavaggio (stazione di servizio)</h2>
+<p><strong>Dati:</strong> prezzo lavaggio
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">P=4</annotation></semantics></math>
+€; salario
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>10</mn><annotation encoding="application/x-tex">10</annotation></semantics></math>
+€/ora; 6 ore/giorno → <strong>costo giornaliero per lavoratore</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>=</mo><mn>10</mn><mo>⋅</mo><mn>6</mn><mo>=</mo><mn>60</mn></mrow><annotation encoding="application/x-tex">W=10\cdot6=60</annotation></semantics></math>
+€. Tabella lavoratori/auto lavate.</p>
+<p><strong>Interpretazione adottata:</strong> il salario è per ora e per
+lavoratore, quindi il costo di un lavoratore è 60 €/giorno; non ci sono
+altri costi (nessun costo fisso), perciò “beneficio marginale” = VPML −
+W.</p>
+<h3 id="cosa-chiede-e-quali-formule">Cosa chiede e quali formule</h3>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>M</mi><mi>L</mi><mo>=</mo><mi mathvariant="normal">Δ</mi><mi>Q</mi><mi>/</mi><mi mathvariant="normal">Δ</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">PML=\Delta Q/\Delta L</annotation></semantics></math>
+(auto in più per lavoratore in più)</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mi>P</mi><mi>M</mi><mi>L</mi><mo>=</mo><mi>P</mi><mo>⋅</mo><mi>P</mi><mi>M</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">VPML=P\cdot PML</annotation></semantics></math></li>
+<li>Beneficio marginale
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mi>M</mi><mi>L</mi><mo>=</mo><mi>V</mi><mi>P</mi><mi>M</mi><mi>L</mi><mo>−</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">BML=VPML-W</annotation></semantics></math></li>
+<li>Regola: assumere finché
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mi>P</mi><mi>M</mi><mi>L</mi><mo>≥</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">VPML \ge W</annotation></semantics></math>
+(cioè
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mi>M</mi><mi>L</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">BML\ge0</annotation></semantics></math>).</li>
+</ul>
+<h3 id="svolgimento-tabella">Svolgimento (tabella)</h3>
+<table style="width:99%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr>
+<th>L</th>
+<th>Q</th>
+<th>PML</th>
+<th>VPML = 4·PML</th>
+<th>W = 60</th>
+<th>BML = VPML − W</th>
+<th>Beneficio totale = 4Q − 60L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>30</td>
+<td>30</td>
+<td>120</td>
+<td>60</td>
+<td><strong>+60</strong></td>
+<td>60</td>
+</tr>
+<tr>
+<td>2</td>
+<td>90</td>
+<td>60</td>
+<td>240</td>
+<td>60</td>
+<td><strong>+180</strong></td>
+<td>240</td>
+</tr>
+<tr>
+<td>3</td>
+<td>130</td>
+<td>40</td>
+<td>160</td>
+<td>60</td>
+<td><strong>+100</strong></td>
+<td>340</td>
+</tr>
+<tr>
+<td>4</td>
+<td>155</td>
+<td>25</td>
+<td>100</td>
+<td>60</td>
+<td><strong>+40</strong></td>
+<td>380</td>
+</tr>
+<tr>
+<td>5</td>
+<td>170</td>
+<td>15</td>
+<td>60</td>
+<td>60</td>
+<td><strong>0</strong></td>
+<td>380</td>
+</tr>
+<tr>
+<td>6</td>
+<td>180</td>
+<td>10</td>
+<td>40</td>
+<td>60</td>
+<td><strong>−20</strong></td>
+<td>360</td>
+</tr>
+<tr>
+<td>7</td>
+<td>185</td>
+<td>5</td>
+<td>20</td>
+<td>60</td>
+<td><strong>−40</strong></td>
+<td>320</td>
+</tr>
+</tbody>
+</table>
+<p>(Calcoli verificati con python3. Il beneficio totale è la somma
+cumulata dei BML: 60, 240, 340, 380, 380, 360, 320.)</p>
+<p><strong>Numero ottimo:</strong> il 4º lavoratore ha ancora VPML (100)
+&gt; W (60): conviene. Il 5º ha VPML = W (60 = 60): beneficio marginale
+0, il profitto non cambia (380 sia con 4 sia con 5). Il 6º ha VPML &lt;
+W: perdita. <strong>Ottimo: 4 lavoratori</strong> (o 5, indifferente;
+scrivere “4, e con 5 l’imprenditore è indifferente”). Beneficio massimo
+380 €/giorno.</p>
+<p><strong>Se assume 3:</strong> ha 340 €; non sfrutta un 4º lavoratore
+che aggiungerebbe +40 €: <strong>rinuncia a 40 €</strong> di profitto
+(VPML 100 &gt; W 60 a sinistra dell’intersezione). <strong>Se assume
+7:</strong> profitto 320 € (inferiore al massimo di 60 €); il 6º
+lavoratore aggiunge −20 e il 7º −40 (VPML &lt; W): <strong>perdite
+marginali</strong>.</p>
+<h3 id="grafico-punto-per-punto">Grafico (punto per punto)</h3>
+<ol type="1">
+<li>Asse verticale: € (VPML e W); asse orizzontale: numero di lavoratori
+L (1…7).</li>
+<li>Disegna i punti VPML: (1;120), (2;240), (3;160), (4;100), (5;60),
+(6;40), (7;20). <strong>Nota:</strong> il PML del 1º lavoratore (30) è
+inferiore a quello del 2º (60): rendimenti crescenti all’inizio
+(l’ipotesi di “decrescente” vale dal 2º in poi); la curva VPML rilevante
+è la parte <strong>decrescente</strong> da L=2.</li>
+<li>Disegna la retta orizzontale W = 60.</li>
+<li>L’incrocio è a L = 5 (VPML = W). A sinistra VPML &gt; W (area dove
+si guadagna), a destra VPML &lt; W (perdita).</li>
+<li>Con <strong>L=3</strong>: area tra VPML e W per L=4 (e 5): beneficio
+non sfruttato (contrassegna con una lettera, es. area A). Con
+<strong>L=7</strong>: area tra W e VPML per L=6 e 7: perdita (area
+B).</li>
+</ol>
+<p><strong>Modello di risposta:</strong> &gt; W = 10·6 = 60 €/día. PML =
+ΔQ/ΔL; VPML = 4·PML; BML = VPML − 60. La empresa contrata mientras VPML
+≥ W: el 4º trabajador aporta 100 &gt; 60 (BML = +40); el 5º aporta 60 =
+60 (BML = 0); el 6º aporta 40 &lt; 60 (BML = −20). Número óptimo: 4
+trabajadores (con 5 es indiferente), beneficio máximo 4·155 − 60·4 = 380
+€. Con 3 trabajadores el beneficio es 340 €: se pierde un beneficio
+potencial de 40 € porque VPML (100) &gt; W (60). Con 7 trabajadores el
+beneficio es 320 €: los trabajadores 6º y 7º generan pérdidas (−20 y
+−40) porque VPML &lt; W. (Interpretación: salario de 60 € diarios por
+trabajador y sin costes fijos.)</p>
+<hr />
+<h2 id="esercizio-3-l_d30-5w-l_s3w4">Esercizio 3 —
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>d</mi></msub><mo>=</mo><mn>30</mn><mo>−</mo><mn>5</mn><mi>w</mi></mrow><annotation encoding="application/x-tex">L_d=30-5w</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>s</mi></msub><mo>=</mo><mn>3</mn><mi>w</mi><mo>+</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">L_s=3w+4</annotation></semantics></math></h2>
+<h3 id="a-equilibrio-e-grafico">a) Equilibrio e grafico</h3>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>30</mn><mo>−</mo><mn>5</mn><mi>w</mi><mo>=</mo><mn>3</mn><mi>w</mi><mo>+</mo><mn>4</mn><mo>⇒</mo><mn>26</mn><mo>=</mo><mn>8</mn><mi>w</mi><mo>⇒</mo><msup><mi>w</mi><mo>*</mo></msup><mo>=</mo><mn>3</mn><mo>,</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">30-5w=3w+4 \Rightarrow 26=8w \Rightarrow w^*=3{,}25</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mo>*</mo></msup><mo>=</mo><mn>3</mn><mo>⋅</mo><mn>3</mn><mo>,</mo><mn>25</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>13</mn><mo>,</mo><mn>75</mn><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mrow><mtext mathvariant="normal">verifica: </mtext><mspace width="0.333em"></mspace></mrow><mn>30</mn><mo>−</mo><mn>5</mn><mo>⋅</mo><mn>3</mn><mo>,</mo><mn>25</mn><mo>=</mo><mn>13</mn><mo>,</mo><mn>75</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">L^*=3\cdot3{,}25+4=13{,}75 \quad(\text{verifica: }30-5\cdot3{,}25=13{,}75)</annotation></semantics></math></p>
+<p><strong>Grafico:</strong> - Domanda:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">L=0</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">w=6</annotation></semantics></math>
+(0;6);
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">w=0</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">L=30</annotation></semantics></math>
+(30;0). - Offerta:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">w=0</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">L=4</annotation></semantics></math>
+(4;0) (intercetta con asse L positiva: anche con salario 0 offrirebbero
+4 unità); es.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">w=6</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>22</mn></mrow><annotation encoding="application/x-tex">L=22</annotation></semantics></math>
+(22;6). - Intersezione E (13,75; 3,25).</p>
+<p><strong>Modello:</strong> &gt; Ld = Ls → 30 − 5w = 3w + 4 → 8w = 26 →
+w* = 3,25; L* = 3·3,25 + 4 = 13,75. Gráfico: demanda decreciente (cortes
+6 y 30), oferta creciente (corta el eje L en 4); equilibrio en (13,75;
+3,25).</p>
+<h3 id="b-disoccupazione-di-3-unità">b) Disoccupazione di 3 unità</h3>
+<p><strong>Cosa chiede:</strong> il testo è ambiguo.
+<strong>Interpretazione adottata:</strong> esiste un salario (superiore
+all’equilibrio, es. per salario minimo o rigidità) al quale
+l’<strong>eccesso di offerta</strong> (disoccupazione)
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>s</mi></msub><mo>−</mo><msub><mi>L</mi><mi>d</mi></msub></mrow><annotation encoding="application/x-tex">L_s-L_d</annotation></semantics></math>
+è 3. Si trova quel salario e la corrispondente offerta di lavoro.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>s</mi></msub><mo>−</mo><msub><mi>L</mi><mi>d</mi></msub><mo>=</mo><mn>3</mn><mo>⇒</mo><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mi>w</mi><mo>+</mo><mn>4</mn><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mn>30</mn><mo>−</mo><mn>5</mn><mi>w</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>3</mn><mo>⇒</mo><mn>8</mn><mi>w</mi><mo>−</mo><mn>26</mn><mo>=</mo><mn>3</mn><mo>⇒</mo><mi>w</mi><mo>=</mo><mfrac><mn>29</mn><mn>8</mn></mfrac><mo>=</mo><mn>3</mn><mo>,</mo><mn>625</mn></mrow><annotation encoding="application/x-tex">L_s-L_d=3 \Rightarrow (3w+4)-(30-5w)=3 \Rightarrow 8w-26=3 \Rightarrow w=\frac{29}{8}=3{,}625</annotation></semantics></math>
+- Offerta:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>s</mi></msub><mo>=</mo><mn>3</mn><mo>⋅</mo><mn>3</mn><mo>,</mo><mn>625</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>14</mn><mo>,</mo><mn>875</mn></mrow><annotation encoding="application/x-tex">L_s=3\cdot3{,}625+4=14{,}875</annotation></semantics></math>
+- Domanda (occupati):
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>d</mi></msub><mo>=</mo><mn>30</mn><mo>−</mo><mn>5</mn><mo>⋅</mo><mn>3</mn><mo>,</mo><mn>625</mn><mo>=</mo><mn>11</mn><mo>,</mo><mn>875</mn></mrow><annotation encoding="application/x-tex">L_d=30-5\cdot3{,}625=11{,}875</annotation></semantics></math>
+- Disoccupazione:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>14</mn><mo>,</mo><mn>875</mn><mo>−</mo><mn>11</mn><mo>,</mo><mn>875</mn><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">14{,}875-11{,}875=3</annotation></semantics></math>
+✓.</p>
+<p>Nel grafico: tratteggio orizzontale a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>3</mn><mo>,</mo><mn>625</mn></mrow><annotation encoding="application/x-tex">w=3{,}625</annotation></semantics></math>
+(sopra l’equilibrio); il segmento tra D e S misura 3 unità =
+disoccupazione.</p>
+<p><strong>Modello:</strong> &gt; Desempleo = Ls − Ld = 3 → (3w+4) −
+(30−5w) = 3 → w = 3,625. Oferta de trabajo Ls = 14,875; empleo (demanda)
+Ld = 11,875; desempleo = 3. (Interpretación: el salario está por encima
+del equilibrio, 3,25, y la oferta excede a la demanda en 3
+unidades.)</p>
+<hr />
+<h2 id="esercizio-4-industria-con-salario-minimo">Esercizio 4 —
+Industria con salario minimo</h2>
+<p><strong>Dati:</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>d</mi></msub><mo>=</mo><mn>1800</mn><mo>−</mo><mn>100</mn><mi>w</mi></mrow><annotation encoding="application/x-tex">L_d=1800-100w</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>s</mi></msub><mo>=</mo><mn>350</mn><mi>w</mi></mrow><annotation encoding="application/x-tex">L_s=350w</annotation></semantics></math>.</p>
+<h3 id="a-equilibrio">a) Equilibrio</h3>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1800</mn><mo>−</mo><mn>100</mn><mi>w</mi><mo>=</mo><mn>350</mn><mi>w</mi><mo>⇒</mo><mn>1800</mn><mo>=</mo><mn>450</mn><mi>w</mi><mo>⇒</mo><msup><mi>w</mi><mo>*</mo></msup><mo>=</mo><mn>4</mn><mo>;</mo><mspace width="1.0em"></mspace><msup><mi>L</mi><mo>*</mo></msup><mo>=</mo><mn>350</mn><mo>⋅</mo><mn>4</mn><mo>=</mo><mn>1400</mn></mrow><annotation encoding="application/x-tex">1800-100w=350w \Rightarrow 1800=450w \Rightarrow w^*=4 ; \quad L^*=350\cdot4=1400</annotation></semantics></math>
+Verifica:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1800</mn><mo>−</mo><mn>400</mn><mo>=</mo><mn>1400</mn></mrow><annotation encoding="application/x-tex">1800-400=1400</annotation></semantics></math>
+✓.</p>
+<h3 id="b-salario-minimo-di-5">b) Salario minimo di 5 €</h3>
+<p>5 &gt; 4, quindi il salario minimo è <strong>vincolante</strong>
+(sopra l’equilibrio, come un prezzo minimo vincolante). -
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>d</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1800</mn><mo>−</mo><mn>500</mn><mo>=</mo><mn>1300</mn></mrow><annotation encoding="application/x-tex">L_d(5)=1800-500=1300</annotation></semantics></math>
+(occupati) -
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>s</mi></msub><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>350</mn><mo>⋅</mo><mn>5</mn><mo>=</mo><mn>1750</mn></mrow><annotation encoding="application/x-tex">L_s(5)=350\cdot5=1750</annotation></semantics></math>
+(vorrebbero lavorare) - <strong>Disoccupazione</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>1750</mn><mo>−</mo><mn>1300</mn><mo>=</mo><mn>450</mn></mrow><annotation encoding="application/x-tex">=1750-1300=450</annotation></semantics></math>
+lavoratori. - Occupazione scende da 1400 a 1300 (−100); chi resta
+occupato guadagna di più (5 invece di 4).</p>
+<p><strong>Grafico:</strong> disegna D (intercette: w=18, L=1800) e S
+(origine). Retta orizzontale a w=5 sopra E (1400;4). Segna i punti A
+(1300;5) sulla domanda e B (1750;5) sull’offerta: il segmento AB = 450 =
+disoccupazione (area dell’eccesso di offerta).</p>
+<p><strong>Modello:</strong> &gt; El salario mínimo de 5 € está por
+encima del equilibrio (4 €): es un precio mínimo vinculante. A w = 5: Ld
+= 1.300, Ls = 1.750 → exceso de oferta = desempleo de 450 trabajadores.
+El empleo baja de 1.400 a 1.300; los ocupados ganan más, pero aparece
+desempleo.</p>
+<h3 id="c-salario-minimo-di-2">c) Salario minimo di 2 €</h3>
+<p>2 &lt; 4: il minimo sta <strong>sotto</strong> il salario di
+equilibrio → <strong>non è vincolante</strong>: il mercato continua a
+pagare 4 e occupare 1400. <strong>Nessun effetto.</strong></p>
+<p><strong>Modello:</strong> &gt; Un salario mínimo de 2 € es inferior
+al salario de equilibrio (4 €), por lo que no es vinculante: el mercado
+sigue en equilibrio con w = 4 y L = 1.400. No tiene ningún efecto.</p>
+<hr />
+<h2 id="esercizio-5-il-taxi-a-new-york-quando-piove">Esercizio 5 — Il
+taxi a New York quando piove</h2>
+<p><strong>Cosa chiede:</strong> spiegare perché un tassista che riceve
+più mance (più reddito) vuole lavorare meno.</p>
+<p><strong>Concetti:</strong> offerta di lavoro individuale (slide 11)
+con curva che piega all’indietro; trade-off lavoro/tempo libero
+(<em>trabajo vs ocio</em>); a un certo salario “mi renta puede ser
+suficiente”; effetto sostituzione vs effetto reddito (approfondimento,
+standard).</p>
+<p><strong>Spiegazione.</strong> Quando piove la domanda di taxi sale e
+le mance (il “salario reale” per ora) aumentano. Un salario orario più
+alto ha due effetti: <strong>effetto sostituzione</strong>: il tempo
+libero diventa più caro, quindi lavoro di più; <strong>effetto
+reddito</strong>: sono più ricco e posso comprare più tempo libero (un
+bene normale). Se l’effetto reddito domina, il tassista raggiunge prima
+il suo reddito obiettivo e smette: la sua curva di offerta è nella parte
+<strong>piegata all’indietro</strong>. Meno taxi disponibili proprio
+quando serve → “impossibile trovare un taxi”.</p>
+<p><strong>Grafico:</strong> assi w/p (verticale) e ore (orizzontale);
+curva a “C rovesciata”: sale e poi piega all’indietro; segna un salario
+alto sulla parte che piega: ore minori.</p>
+<p><strong>Modello:</strong> &gt; Cuando llueve suben las propinas, es
+decir, el salario real por hora. Un salario más alto genera dos efectos:
+el de sustitución (el ocio es más caro y se trabaja más) y el de renta
+(soy más rico y demando más ocio). Para este taxista domina el efecto
+renta: con un salario alto, su renta ya es suficiente y prefiere
+trabajar menos y disfrutar de más ocio. Su curva de oferta de trabajo es
+regresiva (se curva hacia atrás). Por eso hay menos taxis disponibles
+cuando llueve.</p>
+<hr />
+<h2
+id="riepilogo-ambiguità-e-interpretazioni-scrivile-sul-foglio">Riepilogo
+ambiguità e interpretazioni (scrivile sul foglio)</h2>
+<ul>
+<li><strong>Es. 1b:</strong> OPEP/petrolio: interpretato come aumento
+dei costi → domanda di lavoro a sinistra.</li>
+<li><strong>Es. 2:</strong> salario 10 €/ora × 6 ore = 60 €/giorno;
+nessun costo fisso; con 5 lavoratori profitto uguale a 4
+(indifferente).</li>
+<li><strong>Es. 3b:</strong> “oferta de trabajo y salario” con
+disoccupazione 3 interpretato come
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>s</mi></msub><mo>−</mo><msub><mi>L</mi><mi>d</mi></msub><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">L_s-L_d=3</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>3</mn><mo>,</mo><mn>625</mn></mrow><annotation encoding="application/x-tex">w=3{,}625</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>s</mi></msub><mo>=</mo><mn>14</mn><mo>,</mo><mn>875</mn></mrow><annotation encoding="application/x-tex">L_s=14{,}875</annotation></semantics></math>.</li>
+</ul>
+</body>
+</html>
